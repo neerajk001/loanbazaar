@@ -99,7 +99,7 @@ const InsuranceProducts = () => {
 
   return (
     <div id="insurance" className="py-6">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-left mb-6 pl-4">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
             Insurance
@@ -110,17 +110,17 @@ const InsuranceProducts = () => {
         </div>
 
         {/* First 3 static products */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.slice(0, 3).map((product) => (
             <div
               key={product.id}
               onClick={(e) => handleCardClick(e, product.detailsHref)}
               className={`group flex flex-col items-start text-left p-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 cursor-pointer relative border bg-white h-full min-h-[180px] ${product.color === 'blue' ? 'border-blue-100' :
-                  product.color === 'green' ? 'border-green-100' :
-                    product.color === 'orange' ? 'border-orange-100' :
-                      product.color === 'purple' ? 'border-purple-100' :
-                        product.color === 'indigo' ? 'border-indigo-100' :
-                          'border-rose-100'
+                product.color === 'green' ? 'border-green-100' :
+                  product.color === 'orange' ? 'border-orange-100' :
+                    product.color === 'purple' ? 'border-purple-100' :
+                      product.color === 'indigo' ? 'border-indigo-100' :
+                        'border-rose-100'
                 }`}
             >
               {/* Icon - Top Right Absolute */}
@@ -136,11 +136,11 @@ const InsuranceProducts = () => {
 
               {/* Tag */}
               <div className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold mb-2 inline-block ${product.color === 'blue' ? 'bg-blue-50 text-blue-700' :
-                  product.color === 'green' ? 'bg-green-50 text-green-700' :
-                    product.color === 'orange' ? 'bg-orange-50 text-orange-700' :
-                      product.color === 'purple' ? 'bg-purple-50 text-purple-700' :
-                        product.color === 'indigo' ? 'bg-indigo-50 text-indigo-700' :
-                          'bg-rose-50 text-rose-700'
+                product.color === 'green' ? 'bg-green-50 text-green-700' :
+                  product.color === 'orange' ? 'bg-orange-50 text-orange-700' :
+                    product.color === 'purple' ? 'bg-purple-50 text-purple-700' :
+                      product.color === 'indigo' ? 'bg-indigo-50 text-indigo-700' :
+                        'bg-rose-50 text-rose-700'
                 }`}>
                 {product.tag}
               </div>
@@ -161,9 +161,9 @@ const InsuranceProducts = () => {
                   e.stopPropagation();
                   router.push(product.applyHref);
                 }}
-                className="mt-auto bg-blue-600 text-white px-4 py-1.5 rounded-full text-[10px] font-semibold hover:bg-blue-700 transition-colors flex items-center gap-1 shadow-md shadow-blue-100"
+                className="mt-auto bg-blue-600 text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 transition-colors flex items-center gap-1 shadow-md shadow-blue-100"
               >
-                Apply <ArrowRight className="w-3 h-3" />
+                Apply <ArrowRight className="w-4 h-4" />
               </button>
             </div>
           ))}
@@ -172,17 +172,17 @@ const InsuranceProducts = () => {
         {/* Expandable Section */}
         <div className={`grid transition-[grid-template-rows] duration-500 ease-in-out ${showAll ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
           <div className="overflow-hidden">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-6">
               {products.slice(3).map((product) => (
                 <div
                   key={product.id}
                   onClick={(e) => handleCardClick(e, product.detailsHref)}
                   className={`group flex flex-col items-start text-left p-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 cursor-pointer relative border bg-white h-full min-h-[180px] ${product.color === 'blue' ? 'border-blue-100' :
-                      product.color === 'green' ? 'border-green-100' :
-                        product.color === 'orange' ? 'border-orange-100' :
-                          product.color === 'purple' ? 'border-purple-100' :
-                            product.color === 'indigo' ? 'border-indigo-100' :
-                              'border-rose-100'
+                    product.color === 'green' ? 'border-green-100' :
+                      product.color === 'orange' ? 'border-orange-100' :
+                        product.color === 'purple' ? 'border-purple-100' :
+                          product.color === 'indigo' ? 'border-indigo-100' :
+                            'border-rose-100'
                     }`}
                 >
                   {/* Icon - Top Right Absolute */}
@@ -198,11 +198,11 @@ const InsuranceProducts = () => {
 
                   {/* Tag */}
                   <div className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold mb-2 inline-block ${product.color === 'blue' ? 'bg-blue-50 text-blue-700' :
-                      product.color === 'green' ? 'bg-green-50 text-green-700' :
-                        product.color === 'orange' ? 'bg-orange-50 text-orange-700' :
-                          product.color === 'purple' ? 'bg-purple-50 text-purple-700' :
-                            product.color === 'indigo' ? 'bg-indigo-50 text-indigo-700' :
-                              'bg-rose-50 text-rose-700'
+                    product.color === 'green' ? 'bg-green-50 text-green-700' :
+                      product.color === 'orange' ? 'bg-orange-50 text-orange-700' :
+                        product.color === 'purple' ? 'bg-purple-50 text-purple-700' :
+                          product.color === 'indigo' ? 'bg-indigo-50 text-indigo-700' :
+                            'bg-rose-50 text-rose-700'
                     }`}>
                     {product.tag}
                   </div>
@@ -223,9 +223,9 @@ const InsuranceProducts = () => {
                       e.stopPropagation();
                       router.push(product.applyHref);
                     }}
-                    className="mt-auto bg-blue-600 text-white px-4 py-1.5 rounded-full text-[10px] font-semibold hover:bg-blue-700 transition-colors flex items-center gap-1 shadow-md shadow-blue-100"
+                    className="mt-auto bg-blue-600 text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 transition-colors flex items-center gap-1 shadow-md shadow-blue-100"
                   >
-                    Apply <ArrowRight className="w-3 h-3" />
+                    Apply <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
               ))}

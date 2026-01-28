@@ -69,12 +69,7 @@ const Testimonials = () => {
     },
   ];
 
-  const stats = [
-    { value: '10,000+', label: 'Happy Customers' },
-    { value: '₹500Cr+', label: 'Loans Disbursed' },
-    { value: '4.9/5', label: 'Customer Rating' },
-    { value: '48 Hrs', label: 'Avg. Approval Time' },
-  ];
+
 
 
   return (
@@ -82,7 +77,7 @@ const Testimonials = () => {
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-blue-100/50 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-indigo-100/50 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Header */}
         <div className="text-center mb-8">
@@ -98,25 +93,14 @@ const Testimonials = () => {
           </p>
         </div>
 
-        {/* Stats Banner */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-          {stats.map((stat, index) => (
-            <div 
-              key={index} 
-              className="bg-gradient-to-br from-white to-blue-50/40 border-2 border-blue-100 rounded-2xl p-6 text-center shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-            >
-              <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-orange-600 bg-clip-text text-transparent mb-1">{stat.value}</div>
-              <div className="text-gray-600 text-sm font-semibold">{stat.label}</div>
-            </div>
-          ))}
-        </div>
+
 
         {/* Horizontal Scrolling Cards */}
         <div className="relative">
-          <div 
+          <div
             ref={scrollContainerRef}
             className="flex gap-4 overflow-x-auto pb-6 snap-x snap-mandatory scroll-smooth hide-scrollbar"
-            style={{ 
+            style={{
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
             }}
@@ -152,16 +136,15 @@ const Testimonials = () => {
                 }
               }}
               disabled={currentIndex === 0}
-              className={`w-12 h-12 rounded-full flex items-center justify-center transition-all shadow-md ${
-                currentIndex === 0
-                  ? 'bg-white border-2 border-gray-200 text-gray-400 cursor-not-allowed'
-                  : 'bg-white border-2 border-orange-500 text-orange-600 hover:bg-orange-50'
-              }`}
+              className={`w-12 h-12 rounded-full flex items-center justify-center transition-all shadow-md ${currentIndex === 0
+                ? 'bg-white border-2 border-gray-200 text-gray-400 cursor-not-allowed'
+                : 'bg-white border-2 border-orange-500 text-orange-600 hover:bg-orange-50'
+                }`}
               aria-label="Previous testimonial"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
-            
+
             <button
               onClick={() => {
                 const container = scrollContainerRef.current;
@@ -177,11 +160,10 @@ const Testimonials = () => {
                 }
               }}
               disabled={currentIndex >= testimonials.length - 1}
-              className={`w-12 h-12 rounded-full flex items-center justify-center transition-all shadow-md ${
-                currentIndex >= testimonials.length - 1
-                  ? 'bg-white border-2 border-gray-200 text-gray-400 cursor-not-allowed'
-                  : 'bg-white border-2 border-orange-500 text-orange-600 hover:bg-orange-50'
-              }`}
+              className={`w-12 h-12 rounded-full flex items-center justify-center transition-all shadow-md ${currentIndex >= testimonials.length - 1
+                ? 'bg-white border-2 border-gray-200 text-gray-400 cursor-not-allowed'
+                : 'bg-white border-2 border-orange-500 text-orange-600 hover:bg-orange-50'
+                }`}
               aria-label="Next testimonial"
             >
               <ChevronRight className="w-6 h-6" />
@@ -193,75 +175,85 @@ const Testimonials = () => {
   );
 };
 
-// Testimonial Card Component - Sleek Horizontal Design
-const TestimonialCard = ({ 
+// TestimonialCard Component - Premium Glassmorphic Design
+const TestimonialCard = ({
   testimonial
-}: { 
+}: {
   testimonial: any;
 }) => {
   return (
-    <div className="relative group h-full">
-      <div className="relative h-full bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 p-5">
-        
-        {/* Top Accent Line */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-blue-400 to-orange-400 rounded-t-2xl" />
-        
-        {/* Verified Badge */}
-        <div className="absolute top-3 right-3 bg-green-500 text-white text-[9px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
-          <BadgeCheck className="w-2.5 h-2.5" />
-          Verified
+    <div className="relative group h-full py-2 px-1">
+      <div className="relative h-full bg-white/80 backdrop-blur-xl rounded-[2rem] border border-white/60 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden flex flex-col">
+
+        {/* Decorative Background Elements */}
+        <div className="absolute top-0 right-0 p-8 opacity-5">
+          <svg /* Quote Icon */ width="100" height="100" viewBox="0 0 24 24" fill="currentColor" className="text-blue-900 transform rotate-12">
+            <path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 8.44772 14.017 9V11C14.017 11.5523 13.5693 12 13.017 12H12.017V5H22.017V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 8.44772 5.0166 9V11C5.0166 11.5523 4.56889 12 4.0166 12H3.0166V5H13.0166V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z" />
+          </svg>
         </div>
 
-        {/* User Info - Compact */}
-        <div className="flex items-center gap-3 mb-4 mt-2">
-          <div className="relative shrink-0">
-            <img 
-              src={testimonial.image} 
-              alt={testimonial.name} 
-              className="h-12 w-12 rounded-xl object-cover border-2 border-blue-100"
-            />
-            <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-blue-600 rounded-full flex items-center justify-center border-2 border-white">
-              <BadgeCheck className="w-2 h-2 text-white" />
+        {/* Soft Gradient Overlay on Hover */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 via-transparent to-blue-100/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+        <div className="relative z-10 p-6 flex flex-col h-full">
+
+          {/* Header: Profile */}
+          <div className="flex items-center gap-4 mb-5">
+            <div className="relative shrink-0">
+              <div className="w-14 h-14 rounded-full p-1 bg-gradient-to-br from-blue-400 to-indigo-600 shadow-md transform group-hover:scale-105 transition-transform duration-300">
+                <img
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  className="w-full h-full rounded-full object-cover border-2 border-white bg-white"
+                />
+              </div>
+              <div className="absolute -bottom-1 -right-1 bg-green-500 text-white p-1 rounded-full border-2 border-white shadow-sm ring-1 ring-green-100" title="Verified User">
+                <BadgeCheck className="w-3 h-3" />
+              </div>
+            </div>
+
+            <div className="min-w-0">
+              <h4 className="text-lg font-bold text-gray-900 leading-tight truncate pr-2 group-hover:text-blue-700 transition-colors">{testimonial.name}</h4>
+              <p className="text-sm text-gray-500 font-medium truncate">{testimonial.role}</p>
+              <div className="flex items-center gap-1 mt-1">
+                <div className="h-1.5 w-1.5 rounded-full bg-blue-400"></div>
+                <span className="text-xs text-gray-400 font-medium truncate">{testimonial.location}</span>
+              </div>
             </div>
           </div>
-          <div className="flex-1 min-w-0">
-            <h4 className="text-sm font-bold text-gray-900 truncate">{testimonial.name}</h4>
-            <p className="text-xs text-gray-500 truncate">{testimonial.role} • {testimonial.location}</p>
-          </div>
-        </div>
 
-        {/* Rating - Compact */}
-        <div className="flex items-center gap-1 mb-3">
-          {[...Array(5)].map((_, i) => (
-            <Star 
-              key={i} 
-              className={`h-3 w-3 ${i < testimonial.rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'}`} 
-            />
-          ))}
-          <span className="ml-1 text-xs font-semibold text-gray-600">{testimonial.rating}.0</span>
-        </div>
-
-        {/* Content - Compact */}
-        <p className="text-sm text-gray-700 leading-relaxed mb-4 line-clamp-3">
-          &ldquo;{testimonial.content}&rdquo;
-        </p>
-
-        {/* Loan Details - Compact Horizontal */}
-        <div className="flex gap-2 pt-3 border-t border-gray-100">
-          <div className="flex-1 bg-blue-50 rounded-lg p-2 text-center border border-blue-100">
-            <div className="text-[9px] text-gray-500 uppercase tracking-wider mb-0.5 font-semibold">Type</div>
-            <div className="text-xs font-bold text-blue-900 truncate">{testimonial.loanType}</div>
+          {/* Rating */}
+          <div className="flex items-center gap-1 mb-4 bg-yellow-50/50 w-fit px-2 py-1 rounded-lg border border-yellow-100/50">
+            {[...Array(5)].map((_, i) => (
+              <Star
+                key={i}
+                size={14}
+                fill={i < testimonial.rating ? "#FBBF24" : "none"}
+                className={`${i < testimonial.rating ? 'text-yellow-400' : 'text-gray-200'}`}
+              />
+            ))}
+            <span className="text-xs font-bold text-yellow-700 ml-1">{testimonial.rating}.0</span>
           </div>
-          <div className="flex-1 bg-green-50 rounded-lg p-2 text-center border border-green-100">
-            <div className="text-[9px] text-gray-500 uppercase tracking-wider mb-0.5 font-semibold">Amount</div>
-            <div className="text-xs font-bold text-green-700">{testimonial.amount}</div>
-          </div>
-          <div className="flex-1 bg-orange-50 rounded-lg p-2 text-center border border-orange-100">
-            <div className="text-[9px] text-gray-500 uppercase tracking-wider mb-0.5 font-semibold flex items-center justify-center gap-0.5">
-              <Clock className="w-2 h-2" />
-              Time
+
+          {/* Content */}
+          <blockquote className="text-gray-600 leading-relaxed mb-6 text-[15px] flex-grow relative">
+            "{testimonial.content}"
+          </blockquote>
+
+          {/* Stats Footer - Floating Cards */}
+          <div className="mt-auto grid grid-cols-2 gap-3 pt-4 border-t border-gray-100/80">
+            <div className="bg-gradient-to-br from-blue-50 to-white rounded-xl p-3 border border-blue-100/80 shadow-sm group-hover:shadow-md transition-shadow">
+              <p className="text-[10px] uppercase tracking-wider text-blue-400 font-bold mb-0.5 flex items-center gap-1">
+                <TrendingUp size={10} /> Amount
+              </p>
+              <p className="text-sm font-extrabold text-gray-800">{testimonial.amount}</p>
             </div>
-            <div className="text-xs font-bold text-orange-700">{testimonial.time}</div>
+            <div className="bg-gradient-to-br from-indigo-50 to-white rounded-xl p-3 border border-indigo-100/80 shadow-sm group-hover:shadow-md transition-shadow">
+              <p className="text-[10px] uppercase tracking-wider text-indigo-400 font-bold mb-0.5 flex items-center gap-1">
+                <BadgeCheck size={10} /> Type
+              </p>
+              <p className="text-sm font-extrabold text-gray-800 truncate" title={testimonial.loanType}>{testimonial.loanType}</p>
+            </div>
           </div>
         </div>
       </div>
