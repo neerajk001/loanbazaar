@@ -49,7 +49,7 @@ const Navbar = () => {
           {/* Left: Logo */}
           <div className="shrink-0 flex items-center cursor-pointer relative">
             <Link href="/" className="flex items-center">
-              <Image src="/com-logo.png" alt="loanbazaar" width={500} height={250} className="h-16 md:h-20 w-auto" priority />
+              <Image src="/company.png" alt="loanbazaar" width={500} height={250} className="h-10 md:h-12 w-auto" priority />
             </Link>
           </div>
 

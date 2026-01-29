@@ -4,10 +4,17 @@ import Link from 'next/link';
 import { ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import BankSelectionModal from './BankSelectionModal';
 
 const InsuranceProducts = () => {
   const router = useRouter();
   const [showAll, setShowAll] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<{
+    type: string;
+    title: string;
+    applyHref: string;
+  } | null>(null);
 
   const products = [
     {
@@ -159,7 +166,12 @@ const InsuranceProducts = () => {
               <button
                 onClick={(e) => {
                   e.stopPropagation();
-                  router.push(product.applyHref);
+                  setSelectedProduct({
+                    type: product.id,
+                    title: product.title,
+                    applyHref: product.applyHref,
+                  });
+                  setModalOpen(true);
                 }}
                 className="mt-auto bg-blue-600 text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 transition-colors flex items-center gap-1 shadow-md shadow-blue-100"
               >
@@ -221,7 +233,12 @@ const InsuranceProducts = () => {
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      router.push(product.applyHref);
+                      setSelectedProduct({
+                        type: product.id,
+                        title: product.title,
+                        applyHref: product.applyHref,
+                      });
+                      setModalOpen(true);
                     }}
                     className="mt-auto bg-blue-600 text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 transition-colors flex items-center gap-1 shadow-md shadow-blue-100"
                   >
@@ -244,6 +261,20 @@ const InsuranceProducts = () => {
           </button>
         </div>
       </div>
+
+      {/* Bank/Insurance Provider Selection Modal */}
+      {selectedProduct && (
+        <BankSelectionModal
+          isOpen={modalOpen}
+          onClose={() => {
+            setModalOpen(false);
+            setSelectedProduct(null);
+          }}
+          productType={selectedProduct.type}
+          productTitle={selectedProduct.title}
+          applyHref={selectedProduct.applyHref}
+        />
+      )}
     </div>
   );
 };

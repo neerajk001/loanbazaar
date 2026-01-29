@@ -4,12 +4,19 @@ import Link from 'next/link';
 import { ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import BankSelectionModal from './BankSelectionModal';
 
 const Products = () => {
   const router = useRouter();
   const [loanProductsData, setLoanProductsData] = useState<Record<string, { maxAmount: string; interestRate: string }>>({});
   const [loading, setLoading] = useState(true);
   const [showAll, setShowAll] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<{
+    type: string;
+    title: string;
+    applyHref: string;
+  } | null>(null);
 
   useEffect(() => {
     const fetchLoanProducts = async () => {
@@ -223,8 +230,13 @@ const Products = () => {
               {/* Apply Button */}
               <button
                 onClick={(e) => {
-                  e.stopPropagation(); // Stop bubble to parent div
-                  router.push(product.applyHref);
+                  e.stopPropagation();
+                  setSelectedProduct({
+                    type: product.slug,
+                    title: product.title,
+                    applyHref: product.applyHref,
+                  });
+                  setModalOpen(true);
                 }}
                 className="mt-auto bg-blue-600 text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 transition-colors flex items-center gap-1 shadow-md shadow-blue-100"
               >
@@ -289,8 +301,13 @@ const Products = () => {
                   {/* Apply Button */}
                   <button
                     onClick={(e) => {
-                      e.stopPropagation(); // Stop bubble to parent div
-                      router.push(product.applyHref);
+                      e.stopPropagation();
+                      setSelectedProduct({
+                        type: product.slug,
+                        title: product.title,
+                        applyHref: product.applyHref,
+                      });
+                      setModalOpen(true);
                     }}
                     className="mt-auto bg-blue-600 text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 transition-colors flex items-center gap-1 shadow-md shadow-blue-100"
                   >
@@ -313,6 +330,20 @@ const Products = () => {
           </button>
         </div>
       </div>
+
+      {/* Bank Selection Modal */}
+      {selectedProduct && (
+        <BankSelectionModal
+          isOpen={modalOpen}
+          onClose={() => {
+            setModalOpen(false);
+            setSelectedProduct(null);
+          }}
+          productType={selectedProduct.type}
+          productTitle={selectedProduct.title}
+          applyHref={selectedProduct.applyHref}
+        />
+      )}
     </div>
   );
 };

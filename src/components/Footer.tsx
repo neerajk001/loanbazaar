@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-6">
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <img src="/com-logo.png" alt="loanbazaar Logo" className="h-32 w-auto" />
+              <img src="/company.png" alt="loanbazaar Logo" className="h-16 w-auto" />
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">
               Your trusted partner for all financial needs. We make borrowing simple, transparent, and fast.
@@ -74,9 +74,9 @@ const Footer = () => {
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="h-5 w-5 mt-0.5 flex-shrink-0 text-orange-500" />
-                <a 
-                  href="https://www.google.com/maps/search/?api=1&query=Mumbai,+India" 
-                  target="_blank" 
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Mumbai,+India"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-white transition-colors"
                 >
