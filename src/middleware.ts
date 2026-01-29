@@ -3,13 +3,14 @@ import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
   const response = NextResponse.next();
-  
+
   // Localhost only - for local development
   const allowedOrigins = [
     'http://localhost:3000',
     'http://localhost:3001',
     'http://localhost:3002',
     'http://localhost:3003',
+    'https://loanbazaar.onrender.com',
   ];
 
   const origin = request.headers.get('origin');
@@ -31,9 +32,9 @@ export function middleware(request: NextRequest) {
 
   // Handle preflight OPTIONS requests
   if (request.method === 'OPTIONS') {
-    return new NextResponse(null, { 
+    return new NextResponse(null, {
       status: 200,
-      headers: response.headers 
+      headers: response.headers
     });
   }
 
