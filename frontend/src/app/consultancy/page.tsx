@@ -111,53 +111,59 @@ export default function ConsultancyPage() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-gradient-to-b from-slate-50 via-teal-50/20 to-white pt-20">
       <Navbar />
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-6">
-        <div className="grid lg:grid-cols-2 gap-6 items-stretch">
+      {/* Hero Header */}
+      <div className="relative bg-gradient-to-br from-teal-700 via-teal-800 to-indigo-900 text-white py-12 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(45,212,191,0.15),transparent_50%)]" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+          <h1 className="text-3xl md:text-4xl font-bold mb-3 tracking-tight">
+            Get Expert Financial Advice, <span className="text-amber-300">Absolutely Free.</span>
+          </h1>
+          <p className="text-teal-100 max-w-2xl mx-auto text-lg">
+            Our team of financial experts is here to guide you through your loan journey. Request a callback for personalized consultancy.
+          </p>
+        </div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 -mt-4">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
           
-          {/* Left Content */}
+          {/* Left Content - Why Consult */}
           <div className="flex flex-col">
-            <h1 className="text-2xl md:text-3xl font-bold text-blue-900 mb-4">
-              Get Expert Financial Advice, <span className="text-orange-600">Absolutely Free.</span>
-            </h1>
-            
-            <p className="text-base text-gray-600 mb-4">
-              Our team of financial experts is here to guide you through your loan journey. Fill out the form to request a callback and get personalized consultancy.
-            </p>
-            
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 flex-1">
-              <h3 className="text-lg font-bold text-gray-900 mb-8">Why Consult with Us?</h3>
+            <div className="relative bg-white rounded-2xl shadow-lg border border-slate-100 p-8 flex-1 overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-teal-500 to-amber-500" />
+              <h3 className="text-xl font-bold text-slate-800 mb-8">Why Consult with Us?</h3>
               
-              <div className="space-y-10">
-                <div className="flex items-start gap-3">
-                  <div className="bg-blue-50 p-1.5 rounded-lg">
-                    <ShieldCheck className="h-5 w-5 text-blue-600" />
+              <div className="space-y-8">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-teal-500 rounded-xl flex items-center justify-center shrink-0 shadow-md">
+                    <ShieldCheck className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-gray-900 text-base">Unbiased Recommendations</h4>
-                    <p className="text-gray-600 text-sm mt-0.5">We compare offers from 20+ partner banks to find the best fit for your profile.</p>
+                    <h4 className="font-bold text-slate-800 text-base mb-1">Unbiased Recommendations</h4>
+                    <p className="text-slate-600 text-sm leading-relaxed">We compare offers from 20+ partner banks to find the best fit for your profile.</p>
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-3">
-                  <div className="bg-orange-50 p-1.5 rounded-lg">
-                    <CheckCircle2 className="h-5 w-5 text-orange-600" />
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-amber-500 rounded-xl flex items-center justify-center shrink-0 shadow-md">
+                    <CheckCircle2 className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-gray-900 text-base">Higher Approval Chances</h4>
-                    <p className="text-gray-600 text-sm mt-0.5">We match your profile with the right lender criteria to minimize rejection risk.</p>
+                    <h4 className="font-bold text-slate-800 text-base mb-1">Higher Approval Chances</h4>
+                    <p className="text-slate-600 text-sm leading-relaxed">We match your profile with the right lender criteria to minimize rejection risk.</p>
                   </div>  
                 </div> 
                 
-                <div className="flex items-start gap-3">
-                  <div className="bg-green-50 p-1.5 rounded-lg">
-                    <Clock className="h-5 w-5 text-green-600" />
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-indigo-500 rounded-xl flex items-center justify-center shrink-0 shadow-md">
+                    <Clock className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-gray-900 text-base">Fast Track Processing</h4>
-                    <p className="text-gray-600 text-sm mt-0.5">Dedicated relationship managers ensure your application moves quickly.</p>
+                    <h4 className="font-bold text-slate-800 text-base mb-1">Fast Track Processing</h4>
+                    <p className="text-slate-600 text-sm leading-relaxed">Dedicated relationship managers ensure your application moves quickly.</p>
                   </div>
                 </div>
               </div>
@@ -166,9 +172,9 @@ export default function ConsultancyPage() {
 
           {/* Right Form */}
           <div className="flex flex-col">
-            <div className="bg-white rounded-xl shadow-xl border border-gray-100 p-5 flex-1">
-              <h3 className="text-lg font-bold text-blue-900 mb-3">Request Free Consultancy</h3>
-              <form onSubmit={handleSubmit} className="space-y-3">
+            <div className="bg-white rounded-2xl shadow-xl border border-teal-100 p-6 md:p-8 flex-1">
+              <h3 className="text-xl font-bold text-slate-800 mb-6">Request Free Consultancy</h3>
+              <form onSubmit={handleSubmit} className="space-y-4">
                 {error && (
                   <div className="bg-red-50 border border-red-200 rounded-lg p-3">
                     <p className="text-sm text-red-700">{error}</p>
@@ -185,7 +191,7 @@ export default function ConsultancyPage() {
                     onChange={handleInputChange}
                     placeholder="Enter your name"
                     required
-                    className="w-full px-3 py-2 text-sm rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all"
+                    className="w-full px-4 py-3 text-sm rounded-xl border border-slate-200 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all"
                   />
                 </div>
                 
@@ -200,7 +206,7 @@ export default function ConsultancyPage() {
                     placeholder="10-digit mobile number"
                     required
                     maxLength={10}
-                    className="w-full px-3 py-2 text-sm rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all"
+                    className="w-full px-4 py-3 text-sm rounded-xl border border-slate-200 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all"
                   />
                 </div>
 
@@ -213,7 +219,7 @@ export default function ConsultancyPage() {
                         value={formData.email}
                         onChange={handleInputChange}
                         placeholder="your.email@example.com"
-                        className="w-full px-3 py-2 text-sm rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all"
+                        className="w-full px-4 py-3 text-sm rounded-xl border border-slate-200 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all"
                     />
                 </div>
                 
@@ -225,7 +231,7 @@ export default function ConsultancyPage() {
                     value={formData.interestedIn}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 text-sm rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all bg-white"
+                    className="w-full px-4 py-3 text-sm rounded-xl border border-slate-200 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all bg-white"
                   >
                     <option value="">Select an option</option>
                     <option value="Personal Loan">Personal Loan</option>
@@ -252,7 +258,7 @@ export default function ConsultancyPage() {
                         onChange={handleInputChange}
                         rows={2}
                         placeholder="Any specific requirements?"
-                        className="w-full px-3 py-2 text-sm rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all resize-none"
+                        className="w-full px-4 py-3 text-sm rounded-xl border border-slate-200 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all resize-none"
                     ></textarea>
                 </div>
                 
@@ -264,7 +270,7 @@ export default function ConsultancyPage() {
                     checked={formData.authorized}
                     onChange={handleInputChange}
                     required
-                    className="mt-0.5 h-3.5 w-3.5 text-orange-600 border-gray-300 rounded focus:ring-orange-500"
+                    className="mt-0.5 h-4 w-4 text-teal-600 border-slate-300 rounded focus:ring-teal-500"
                   />
                   <label htmlFor="authorized" className="text-[10px] text-gray-500 leading-tight">
                     I authorize Loanbazaar to contact me via Call/SMS/WhatsApp. <span className="text-red-500">*</span>
@@ -274,7 +280,7 @@ export default function ConsultancyPage() {
                 <button 
                   type="submit" 
                   disabled={isSubmitting}
-                  className="w-full bg-orange-600 text-white font-bold py-2.5 rounded-lg hover:bg-orange-700 transition-colors mt-1 shadow-md text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-gradient-to-r from-teal-600 to-teal-700 text-white font-bold py-3.5 rounded-xl hover:from-teal-700 hover:to-teal-800 transition-colors mt-2 shadow-lg text-sm disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? 'Submitting...' : 'Get Free Advice'}
                 </button>
@@ -294,8 +300,8 @@ export default function ConsultancyPage() {
                 </button>
                 
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <CheckCircle className="w-10 h-10 text-green-600" />
+                  <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <CheckCircle className="w-10 h-10 text-teal-600" />
                   </div>
                   
                   <h2 className="text-2xl font-bold text-gray-900 mb-2">Request Submitted!</h2>
@@ -306,7 +312,7 @@ export default function ConsultancyPage() {
                   
                   <button
                     onClick={() => setShowSuccessModal(false)}
-                    className="w-full bg-orange-600 text-white font-bold py-3 rounded-lg hover:bg-orange-700 transition-colors"
+                    className="w-full bg-teal-600 text-white font-bold py-3 rounded-xl hover:bg-teal-700 transition-colors"
                   >
                     Close
                   </button>

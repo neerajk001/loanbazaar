@@ -219,7 +219,7 @@ const DetailedCalculatorContent = () => {
     const pageHeight = doc.internal.pageSize.getHeight();
     
     const logo = new Image();
-    logo.src = '/logo.jpeg';
+    logo.src = '/company.png';
 
     const drawSummary = (startY: number) => {
         // Enhanced Summary Box
@@ -369,7 +369,7 @@ const DetailedCalculatorContent = () => {
     };
 
     logo.onload = () => {
-        doc.addImage(logo, 'JPEG', 14, 10, 35, 13);
+        doc.addImage(logo, 'PNG', 14, 10, 35, 13);
         
         doc.setFontSize(19);
         doc.setTextColor(30, 58, 138);
@@ -480,7 +480,7 @@ const DetailedCalculatorContent = () => {
     const pageHeight = doc.internal.pageSize.getHeight();
     
     const logo = new Image();
-    logo.src = '/logo.jpeg';
+    logo.src = '/company.png';
 
     const generateSchedule = (startY: number) => {
         // Loan Summary Box
@@ -639,7 +639,7 @@ const DetailedCalculatorContent = () => {
     };
 
     logo.onload = () => {
-        doc.addImage(logo, 'JPEG', 14, 10, 35, 13);
+        doc.addImage(logo, 'PNG', 14, 10, 35, 13);
         
         doc.setFontSize(18);
         doc.setTextColor(30, 58, 138);
@@ -855,19 +855,19 @@ const DetailedCalculatorContent = () => {
   const principalPercentage = 100 - interestPercentage;
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white font-sans">
+    <main className="min-h-screen bg-gradient-to-b from-slate-50 via-teal-50/30 to-white font-sans pt-20">
       <Navbar />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Tabs */}
         <div className="flex justify-center mb-12">
-          <div className="bg-white p-1 rounded-xl shadow-sm border border-gray-200 inline-flex overflow-x-auto max-w-full">
+          <div className="bg-white/80 backdrop-blur-sm p-1.5 rounded-2xl shadow-lg border border-slate-200/80 inline-flex overflow-x-auto max-w-full">
             <button
               onClick={() => setActiveTab('emi')}
-              className={`flex items-center gap-2 px-6 py-6 rounded-lg text-sm font-bold transition-all whitespace-nowrap ${
+              className={`flex items-center gap-2 px-6 py-5 rounded-xl text-sm font-bold transition-all whitespace-nowrap ${
                 activeTab === 'emi'
-                  ? 'bg-blue-900 text-white shadow-md'
-                  : 'text-gray-500 hover:text-blue-900 hover:bg-blue-50'
+                  ? 'bg-gradient-to-r from-teal-600 to-teal-700 text-white shadow-md'
+                  : 'text-slate-600 hover:text-teal-700 hover:bg-teal-50'
               }`}
             >
               <CalculatorIcon className="w-4 h-4" />
@@ -875,10 +875,10 @@ const DetailedCalculatorContent = () => {
             </button>
             <button
               onClick={() => setActiveTab('eligibility')}
-              className={`flex items-center gap-2 px-6 py-6 rounded-lg text-sm font-bold transition-all whitespace-nowrap ${
+              className={`flex items-center gap-2 px-6 py-5 rounded-xl text-sm font-bold transition-all whitespace-nowrap ${
                 activeTab === 'eligibility'
-                  ? 'bg-blue-900 text-white shadow-md'
-                  : 'text-gray-500 hover:text-blue-900 hover:bg-blue-50'
+                  ? 'bg-gradient-to-r from-teal-600 to-teal-700 text-white shadow-md'
+                  : 'text-slate-600 hover:text-teal-700 hover:bg-teal-50'
               }`}
             >
               <CheckCircle2 className="w-4 h-4" />
@@ -886,10 +886,10 @@ const DetailedCalculatorContent = () => {
             </button>
             <button
               onClick={() => setActiveTab('balance')}
-              className={`flex items-center gap-2 px-6 py-6 rounded-lg text-sm font-bold transition-all whitespace-nowrap ${
+              className={`flex items-center gap-2 px-6 py-5 rounded-xl text-sm font-bold transition-all whitespace-nowrap ${
                 activeTab === 'balance'
-                  ? 'bg-blue-900 text-white shadow-md'
-                  : 'text-gray-500 hover:text-blue-900 hover:bg-blue-50'
+                  ? 'bg-gradient-to-r from-teal-600 to-teal-700 text-white shadow-md'
+                  : 'text-slate-600 hover:text-teal-700 hover:bg-teal-50'
               }`}
             >
               <RefreshCw className="w-4 h-4" />
@@ -897,10 +897,10 @@ const DetailedCalculatorContent = () => {
             </button>
             <button
               onClick={() => setActiveTab('part-payment')}
-              className={`flex items-center gap-2 px-6 py-6 rounded-lg text-sm font-bold transition-all whitespace-nowrap ${
+              className={`flex items-center gap-2 px-6 py-5 rounded-xl text-sm font-bold transition-all whitespace-nowrap ${
                 activeTab === 'part-payment'
-                  ? 'bg-blue-900 text-white shadow-md'
-                  : 'text-gray-500 hover:text-blue-900 hover:bg-blue-50'
+                  ? 'bg-gradient-to-r from-teal-600 to-teal-700 text-white shadow-md'
+                  : 'text-slate-600 hover:text-teal-700 hover:bg-teal-50'
               }`}
             >
               <PercentIcon className="w-4 h-4" />
@@ -914,14 +914,14 @@ const DetailedCalculatorContent = () => {
           <div className="grid grid-cols-12 gap-4 md:gap-6">
             
             {/* Main Calculator Input - Large Card */}
-            <div className="col-span-12 lg:col-span-7 bg-blue-50/30 border border-blue-100 rounded-3xl p-6 md:p-8 shadow-sm">
+            <div className="col-span-12 lg:col-span-7 bg-white/80 backdrop-blur-sm border border-teal-100 rounded-3xl p-6 md:p-8 shadow-lg">
               <div className="flex items-center gap-3 mb-8">
-                <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm">
-                  <CalculatorIcon className="w-6 h-6 text-orange-600" />
+                <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center shadow-md">
+                  <CalculatorIcon className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h2 className="text-xl font-bold text-blue-900">Loan Details</h2>
-                  <p className="text-gray-500 text-sm">Adjust the values to calculate EMI</p>
+                  <h2 className="text-xl font-bold text-slate-800">Loan Details</h2>
+                  <p className="text-slate-500 text-sm">Adjust the values to calculate EMI</p>
                 </div>
               </div>
 
@@ -962,13 +962,13 @@ const DetailedCalculatorContent = () => {
                       <div className="flex bg-gray-100 rounded-xl p-1">
                         <button 
                           onClick={() => setTenureType('years')}
-                          className={`px-4 py-1.5 rounded-lg text-sm font-semibold transition-all ${tenureType === 'years' ? 'bg-white text-blue-900 shadow-sm' : 'text-gray-500'}`}
+                          className={`px-4 py-1.5 rounded-lg text-sm font-semibold transition-all ${tenureType === 'years' ? 'bg-white text-teal-700 shadow-sm' : 'text-slate-500'}`}
                         >
                           Years
                         </button>
                         <button 
                           onClick={() => setTenureType('months')}
-                          className={`px-4 py-1.5 rounded-lg text-sm font-semibold transition-all ${tenureType === 'months' ? 'bg-white text-blue-900 shadow-sm' : 'text-gray-500'}`}
+                          className={`px-4 py-1.5 rounded-lg text-sm font-semibold transition-all ${tenureType === 'months' ? 'bg-white text-teal-700 shadow-sm' : 'text-slate-500'}`}
                         >
                           Months
                         </button>
@@ -978,7 +978,7 @@ const DetailedCalculatorContent = () => {
                           type="number" 
                           value={tenure}
                           onChange={(e) => setTenure(Number(e.target.value))}
-                          className="bg-transparent text-center w-full focus:outline-none font-bold text-blue-900"
+                          className="bg-transparent text-center w-full focus:outline-none font-bold text-slate-800"
                         />
                       </div>
                     </div>
@@ -1003,11 +1003,11 @@ const DetailedCalculatorContent = () => {
             {/* Right Column Wrapper */}
             <div className="col-span-12 lg:col-span-5 flex flex-col gap-4 md:gap-6">
               {/* EMI Result - Featured Card */}
-              <div className="bg-blue-900 border border-blue-900 rounded-3xl p-5 md:p-6 text-white relative overflow-hidden h-fit">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+              <div className="bg-gradient-to-br from-teal-700 to-teal-900 border border-teal-600/50 rounded-3xl p-5 md:p-6 text-white relative overflow-hidden h-fit shadow-xl">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
                 
                 <div className="relative">
-                  <div className="flex items-center gap-2 text-blue-200 text-xs font-bold uppercase tracking-wider mb-1">
+                  <div className="flex items-center gap-2 text-teal-200 text-xs font-bold uppercase tracking-wider mb-1">
                     <Sparkles className="w-3 h-3" />
                     MONTHLY EMI
                   </div>
@@ -1017,18 +1017,18 @@ const DetailedCalculatorContent = () => {
                   
                   <div className="grid grid-cols-2 gap-3 mb-3">
                     <div className="bg-white/10 rounded-xl p-2.5">
-                      <div className="text-blue-200 text-[10px] uppercase font-bold mb-0.5">Total Interest</div>
+                      <div className="text-teal-200 text-[10px] uppercase font-bold mb-0.5">Total Interest</div>
                       <div className="text-base font-bold">₹{formatCurrency(totalInterest)}</div>
                     </div>
                     <div className="bg-white/10 rounded-xl p-2.5">
-                      <div className="text-blue-200 text-[10px] uppercase font-bold mb-0.5">Total Payment</div>
+                      <div className="text-teal-200 text-[10px] uppercase font-bold mb-0.5">Total Payment</div>
                       <div className="text-base font-bold">₹{formatCurrency(totalPayment)}</div>
                     </div>
                   </div>
 
                   <Link 
                     href="/apply"
-                    className="flex items-center justify-center gap-2 w-full bg-orange-600 text-white py-2.5 rounded-xl font-bold hover:bg-orange-700 transition-colors shadow-lg text-sm"
+                    className="flex items-center justify-center gap-2 w-full bg-amber-500 text-slate-900 py-2.5 rounded-xl font-bold hover:bg-amber-400 transition-colors shadow-lg text-sm"
                   >
                     Apply for this Loan
                     <ArrowRight className="w-4 h-4" />
@@ -1037,8 +1037,8 @@ const DetailedCalculatorContent = () => {
               </div>
 
               {/* Eligibility Check CTA */}
-              <div className="flex-1 bg-blue-900 border border-blue-900 rounded-3xl p-5 md:p-6 text-white relative overflow-hidden min-h-[200px] flex flex-col justify-center">
-                <div className="absolute bottom-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl" />
+              <div className="flex-1 bg-gradient-to-br from-indigo-600 to-indigo-800 border border-indigo-500/50 rounded-3xl p-5 md:p-6 text-white relative overflow-hidden min-h-[200px] flex flex-col justify-center shadow-xl">
+                <div className="absolute bottom-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
                 <div className="relative">
                   <div className="flex items-center gap-3 mb-3">
                      <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center">
@@ -1046,10 +1046,10 @@ const DetailedCalculatorContent = () => {
                      </div>
                      <h3 className="text-lg font-bold">Check Eligibility</h3>
                   </div>
-                  <p className="text-blue-200 text-sm mb-4">Find out how much loan you can get based on your income.</p>
+                  <p className="text-indigo-200 text-sm mb-4">Find out how much loan you can get based on your income.</p>
                   <button 
                     onClick={() => setActiveTab('eligibility')}
-                    className="inline-flex items-center gap-2 text-white font-semibold hover:text-orange-200 transition-colors text-sm"
+                    className="inline-flex items-center gap-2 text-white font-semibold hover:text-amber-200 transition-colors text-sm"
                   >
                     Check Now <ArrowRight className="w-4 h-4" />
                   </button>
@@ -1058,8 +1058,8 @@ const DetailedCalculatorContent = () => {
             </div>
 
             {/* Donut Chart Card */}
-            <div className="col-span-12 md:col-span-6 lg:col-span-4 bg-orange-50/30 border border-orange-100 rounded-3xl p-6 shadow-sm">
-              <h3 className="font-bold text-blue-900 mb-4">Payment Breakdown</h3>
+            <div className="col-span-12 md:col-span-6 lg:col-span-4 bg-white/80 backdrop-blur-sm border border-teal-100 rounded-3xl p-6 shadow-lg">
+              <h3 className="font-bold text-slate-800 mb-4">Payment Breakdown</h3>
               
               <div className="h-48 relative">
                 <ResponsiveContainer width="100%" height="100%">
@@ -1075,76 +1075,76 @@ const DetailedCalculatorContent = () => {
                       stroke="none"
                     >
                       {chartData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={index === 0 ? '#1e3a8a' : '#ea580c'} />
+                        <Cell key={`cell-${index}`} fill={index === 0 ? '#0d9488' : '#f59e0b'} />
                       ))}
                     </Pie>
                   </PieChart>
                 </ResponsiveContainer>
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-                  <div className="text-2xl font-bold text-blue-900">{principalPercentage}%</div>
-                  <div className="text-xs text-gray-500">Principal</div>
+                  <div className="text-2xl font-bold text-slate-800">{principalPercentage}%</div>
+                  <div className="text-xs text-slate-500">Principal</div>
                 </div>
               </div>
 
               <div className="flex justify-center gap-6 mt-4">
                 <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-blue-900"></div>
-                  <span className="text-sm text-gray-600">Principal ({principalPercentage}%)</span>
+                  <div className="w-3 h-3 rounded-full bg-teal-600"></div>
+                  <span className="text-sm text-slate-600">Principal ({principalPercentage}%)</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-orange-600"></div>
-                  <span className="text-sm text-gray-600">Interest ({interestPercentage}%)</span>
+                  <div className="w-3 h-3 rounded-full bg-amber-500"></div>
+                  <span className="text-sm text-slate-600">Interest ({interestPercentage}%)</span>
                 </div>
               </div>
             </div>
 
             {/* Quick Stats Cards */}
-            <div className="col-span-6 md:col-span-3 lg:col-span-2 bg-blue-50/40 border border-blue-100 rounded-3xl p-5 flex flex-col justify-between">
-              <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center mb-3 shadow-sm">
-                <PiggyBank className="w-5 h-5 text-blue-600" />
+            <div className="col-span-6 md:col-span-3 lg:col-span-2 bg-teal-50/80 border border-teal-100 rounded-3xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+              <div className="w-10 h-10 bg-teal-500 rounded-xl flex items-center justify-center mb-3 shadow-sm">
+                <PiggyBank className="w-5 h-5 text-white" />
               </div>
               <div>
-                <div className="text-2xl font-bold text-blue-900">₹{formatCurrency(loanAmount)}</div>
-                <div className="text-sm text-gray-600">Principal</div>
+                <div className="text-2xl font-bold text-slate-800">₹{formatCurrency(loanAmount)}</div>
+                <div className="text-sm text-slate-600">Principal</div>
               </div>
             </div>
 
-            <div className="col-span-6 md:col-span-3 lg:col-span-2 bg-orange-50/40 border border-orange-100 rounded-3xl p-5 flex flex-col justify-between">
-              <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center mb-3 shadow-sm">
-                <TrendingUp className="w-5 h-5 text-orange-600" />
+            <div className="col-span-6 md:col-span-3 lg:col-span-2 bg-amber-50/80 border border-amber-100 rounded-3xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+              <div className="w-10 h-10 bg-amber-500 rounded-xl flex items-center justify-center mb-3 shadow-sm">
+                <TrendingUp className="w-5 h-5 text-white" />
               </div>
               <div>
-                <div className="text-2xl font-bold text-blue-900">{interestRate}%</div>
-                <div className="text-sm text-gray-600">Interest Rate</div>
+                <div className="text-2xl font-bold text-slate-800">{interestRate}%</div>
+                <div className="text-sm text-slate-600">Interest Rate</div>
               </div>
             </div>
 
-            <div className="col-span-6 md:col-span-6 lg:col-span-2 bg-blue-50/40 border border-blue-100 rounded-3xl p-5 flex flex-col justify-between">
-              <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center mb-3 shadow-sm">
-                <Clock className="w-5 h-5 text-blue-600" />
+            <div className="col-span-6 md:col-span-6 lg:col-span-2 bg-teal-50/80 border border-teal-100 rounded-3xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+              <div className="w-10 h-10 bg-teal-500 rounded-xl flex items-center justify-center mb-3 shadow-sm">
+                <Clock className="w-5 h-5 text-white" />
               </div>
               <div>
-                <div className="text-2xl font-bold text-blue-900">{tenure} {tenureType === 'years' ? 'Yrs' : 'Mo'}</div>
-                <div className="text-sm text-gray-600">Tenure</div>
+                <div className="text-2xl font-bold text-slate-800">{tenure} {tenureType === 'years' ? 'Yrs' : 'Mo'}</div>
+                <div className="text-sm text-slate-600">Tenure</div>
               </div>
             </div>
 
-            <div className="col-span-6 md:col-span-6 lg:col-span-2 bg-orange-50/40 border border-orange-100 rounded-3xl p-5 flex flex-col justify-between">
-              <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center mb-3 shadow-sm">
-                <Target className="w-5 h-5 text-orange-600" />
+            <div className="col-span-6 md:col-span-6 lg:col-span-2 bg-amber-50/80 border border-amber-100 rounded-3xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+              <div className="w-10 h-10 bg-amber-500 rounded-xl flex items-center justify-center mb-3 shadow-sm">
+                <Target className="w-5 h-5 text-white" />
               </div>
               <div>
-                <div className="text-2xl font-bold text-blue-900">₹{formatCurrency(totalInterest)}</div>
-                <div className="text-sm text-gray-600">Total Interest</div>
+                <div className="text-2xl font-bold text-slate-800">₹{formatCurrency(totalInterest)}</div>
+                <div className="text-sm text-slate-600">Total Interest</div>
               </div>
             </div>
 
 
             {/* Amortization Schedule */}
-            <div className="col-span-12 bg-gray-50 border border-gray-200 rounded-3xl p-6 md:p-8 shadow-sm">
+            <div className="col-span-12 bg-white/80 backdrop-blur-sm border border-slate-200 rounded-3xl p-6 md:p-8 shadow-lg">
               <div className="flex items-center justify-between mb-6">
                 <div>
-                  <h3 className="text-xl font-bold text-blue-900">Repayment Schedule</h3>
+                  <h3 className="text-xl font-bold text-slate-800">Repayment Schedule</h3>
                   <p className="text-gray-500 text-sm">Click on a year to view month-wise breakdown</p>
                 </div>
               </div>
@@ -1152,7 +1152,7 @@ const DetailedCalculatorContent = () => {
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
-                    <tr className="border-b-2 border-gray-200 bg-gray-100">
+                    <tr className="border-b-2 border-teal-200 bg-teal-50/50">
                       <th className="text-left py-4 px-4 text-gray-600 font-semibold text-sm">Year</th>
                       <th className="text-right py-4 px-4 text-gray-600 font-semibold text-sm">Principal Paid</th>
                       <th className="text-right py-4 px-4 text-gray-600 font-semibold text-sm">Interest Paid</th>
@@ -1168,27 +1168,27 @@ const DetailedCalculatorContent = () => {
                         <React.Fragment key={originalIndex}>
                           {/* Year Row - Clickable */}
                           <tr 
-                            className="border-b border-gray-100 hover:bg-blue-50/50 transition-colors cursor-pointer"
+                            className="border-b border-slate-100 hover:bg-teal-50/50 transition-colors cursor-pointer"
                             onClick={() => toggleYearExpansion(row.year)}
                           >
                             <td className="py-4 px-4">
                               <div className="flex items-center gap-2">
-                                <button className="p-1 hover:bg-gray-200 rounded transition-colors">
+                                <button className="p-1 hover:bg-teal-100 rounded transition-colors">
                                   {expandedYears.includes(row.year) ? (
                                     <Minus className="w-4 h-4 text-gray-500" />
                                   ) : (
                                     <Plus className="w-4 h-4 text-gray-500" />
                                   )}
                                 </button>
-                                <span className="font-bold text-blue-900">
+                                <span className="font-bold text-slate-800">
                                   {row.actualYear}
                                 </span>
                               </div>
                             </td>
                             <td className="text-right py-4 px-4 font-medium text-gray-900">₹{formatCurrency(row.principal)}</td>
-                            <td className="text-right py-4 px-4 font-medium text-orange-600">₹{formatCurrency(row.interest)}</td>
+                            <td className="text-right py-4 px-4 font-medium text-amber-600">₹{formatCurrency(row.interest)}</td>
                             <td className="text-right py-4 px-4 font-medium text-gray-700">₹{formatCurrency(row.totalEmi)}</td>
-                            <td className="text-right py-4 px-4 font-bold text-blue-600">₹{formatCurrency(row.balance)}</td>
+                            <td className="text-right py-4 px-4 font-bold text-teal-600">₹{formatCurrency(row.balance)}</td>
                             <td className="text-right py-4 px-4 font-medium text-green-600">{row.loanPaidPercent}%</td>
                           </tr>
                           
@@ -1204,7 +1204,7 @@ const DetailedCalculatorContent = () => {
                               <td className="text-right py-3 px-4 text-sm text-gray-700">₹{formatCurrency(month.principal)}</td>
                               <td className="text-right py-3 px-4 text-sm text-orange-500">₹{formatCurrency(month.interest)}</td>
                               <td className="text-right py-3 px-4 text-sm text-gray-600">₹{formatCurrency(month.emi)}</td>
-                              <td className="text-right py-3 px-4 text-sm text-blue-500">₹{formatCurrency(month.balance)}</td>
+                              <td className="text-right py-3 px-4 text-sm text-teal-600">₹{formatCurrency(month.balance)}</td>
                               <td className="text-right py-3 px-4 text-sm text-green-500">{month.loanPaidPercent}%</td>
                             </tr>
                           ))}
@@ -1228,7 +1228,7 @@ const DetailedCalculatorContent = () => {
                       className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${
                         emiCurrentPage === 1
                           ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                          : 'bg-blue-50 text-blue-700 hover:bg-blue-100'
+                          : 'bg-teal-50 text-teal-700 hover:bg-teal-100'
                       }`}
                     >
                       <ChevronLeft className="w-4 h-4" /> Previous
@@ -1248,7 +1248,7 @@ const DetailedCalculatorContent = () => {
                               onClick={() => setEmiCurrentPage(page)}
                               className={`w-8 h-8 rounded-lg text-sm font-semibold transition-colors ${
                                 emiCurrentPage === page
-                                  ? 'bg-blue-900 text-white'
+                                  ? 'bg-teal-600 text-white'
                                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                               }`}
                             >
@@ -1275,7 +1275,7 @@ const DetailedCalculatorContent = () => {
                       className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${
                         emiCurrentPage === emiTotalPages
                           ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                          : 'bg-blue-50 text-blue-700 hover:bg-blue-100'
+                          : 'bg-teal-50 text-teal-700 hover:bg-teal-100'
                       }`}
                     >
                       Next <ChevronRight className="w-4 h-4" />
@@ -1287,7 +1287,7 @@ const DetailedCalculatorContent = () => {
               <div className="mt-6 flex justify-end">
                 <button 
                   onClick={downloadEmiPDF}
-                  className="flex items-center gap-2 bg-blue-900 hover:bg-blue-800 text-white px-6 py-3 rounded-xl font-bold text-sm transition-colors shadow-md"
+                  className="flex items-center gap-2 bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-xl font-bold text-sm transition-colors shadow-md"
                 >
                   <Download className="w-4 h-4" /> Download Schedule PDF
                 </button>
@@ -1299,13 +1299,13 @@ const DetailedCalculatorContent = () => {
         {/* Eligibility Calculator View */}
         {activeTab === 'eligibility' && (
           <div className="grid grid-cols-12 gap-4 md:gap-6">
-            <div className="col-span-12 lg:col-span-7 bg-blue-50/30 border border-blue-100 rounded-3xl p-6 md:p-8 shadow-sm">
+            <div className="col-span-12 lg:col-span-7 bg-white/80 backdrop-blur-sm border border-teal-100 rounded-3xl p-6 md:p-8 shadow-lg">
               <div className="flex items-center gap-3 mb-8">
-                <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm">
-                  <CheckCircle2 className="w-6 h-6 text-orange-600" />
+                <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center shadow-md">
+                  <CheckCircle2 className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h2 className="text-xl font-bold text-blue-900">Check Eligibility</h2>
+                  <h2 className="text-xl font-bold text-slate-800">Check Eligibility</h2>
                   <p className="text-gray-500 text-sm">Enter your details to check loan eligibility</p>
                 </div>
               </div>
@@ -1317,7 +1317,7 @@ const DetailedCalculatorContent = () => {
                     type="number" 
                     value={income}
                     onChange={(e) => setIncome(e.target.value)}
-                    className="w-full px-4 py-3 text-lg font-semibold text-gray-900 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
+                    className="w-full px-4 py-3 text-lg font-semibold text-gray-900 border-2 border-slate-200 rounded-xl focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-200 transition-all"
                     placeholder="0"
                   />
                   <p className="text-xs text-gray-500 mt-2">Salary deposited in bank</p>
@@ -1329,7 +1329,7 @@ const DetailedCalculatorContent = () => {
                     type="number" 
                     value={existingEmi}
                     onChange={(e) => setExistingEmi(e.target.value)}
-                    className="w-full px-4 py-3 text-lg font-semibold text-gray-900 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
+                    className="w-full px-4 py-3 text-lg font-semibold text-gray-900 border-2 border-slate-200 rounded-xl focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-200 transition-all"
                     placeholder="0"
                   />
                   <p className="text-xs text-gray-500 mt-2">Don't Include Balance transfer loan EMIs</p>
@@ -1343,7 +1343,7 @@ const DetailedCalculatorContent = () => {
                     onChange={(e) => setEligTenure(e.target.value)}
                     min="1"
                     max="30"
-                    className="w-full px-4 py-3 text-lg font-semibold text-gray-900 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
+                    className="w-full px-4 py-3 text-lg font-semibold text-gray-900 border-2 border-slate-200 rounded-xl focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-200 transition-all"
                     placeholder="1"
                   />
                   <p className="text-xs text-gray-500 mt-2">Repayment period you prefer</p>
@@ -1353,34 +1353,34 @@ const DetailedCalculatorContent = () => {
 
             {/* Results Column */}
             <div className="col-span-12 lg:col-span-5">
-              <div className="bg-white border-2 border-gray-200 rounded-3xl p-8 shadow-sm">
-                <h3 className="text-xl font-bold text-gray-900 mb-6 pb-4 border-b-2 border-green-500">
+              <div className="bg-white/80 backdrop-blur-sm border-2 border-teal-200 rounded-3xl p-8 shadow-lg">
+                <h3 className="text-xl font-bold text-slate-800 mb-6 pb-4 border-b-2 border-teal-500">
                   Your Loan Eligibility Result
                 </h3>
                 
                 <div className="space-y-6">
                   <div>
                     <div className="text-sm text-gray-500 mb-2">Max EMI Capacity</div>
-                    <div className="text-3xl font-bold text-blue-600">₹{formatCurrency(maxEmiCapacity)}</div>
+                    <div className="text-3xl font-bold text-teal-600">₹{formatCurrency(maxEmiCapacity)}</div>
                     <p className="text-xs text-gray-500 mt-1">This will be new EMI</p>
                   </div>
                   
                   <div>
                     <div className="text-sm text-gray-500 mb-2">Per Lakh EMI</div>
-                    <div className="text-3xl font-bold text-orange-600">₹{formatCurrency(Math.round((maxEmiCapacity / (eligibleAmount / 100000)) || 0))}</div>
+                    <div className="text-3xl font-bold text-amber-600">₹{formatCurrency(Math.round((maxEmiCapacity / (eligibleAmount / 100000)) || 0))}</div>
                     <p className="text-xs text-gray-500 mt-1">@ {applicableROI.toFixed(2)}% on {eligTenure || '1'} Years</p>
                   </div>
                   
                   <div>
                     <div className="text-sm text-gray-500 mb-2">Max Loan Amount</div>
-                    <div className="text-3xl font-bold text-green-600">₹{formatCurrency(eligibleAmount)}</div>
+                    <div className="text-3xl font-bold text-teal-600">₹{formatCurrency(eligibleAmount)}</div>
                     <p className="text-xs text-gray-500 mt-1">Total Eligibility of Loan Amount</p>
                   </div>
                 </div>
                 
                 <Link 
                   href="/apply"
-                  className="flex items-center justify-center gap-2 w-full bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition-colors shadow-lg mt-8"
+                  className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-teal-600 to-teal-700 text-white py-4 rounded-xl font-bold hover:from-teal-700 hover:to-teal-800 transition-colors shadow-lg mt-8"
                 >
                   Apply Now
                   <ArrowRight className="w-5 h-5" />
@@ -1394,14 +1394,14 @@ const DetailedCalculatorContent = () => {
         {activeTab === 'balance' && (
           <div className="grid grid-cols-12 gap-4 md:gap-6">
             {/* BT Inputs Card */}
-            <div className="col-span-12 lg:col-span-6 bg-gradient-to-br from-blue-50 to-orange-50/30 border-2 border-blue-200 rounded-3xl p-6 md:p-8 shadow-lg">
+            <div className="col-span-12 lg:col-span-6 bg-white/80 backdrop-blur-sm border-2 border-teal-200 rounded-3xl p-6 md:p-8 shadow-lg">
               <div className="flex items-center gap-3 mb-8">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-orange-600 rounded-2xl flex items-center justify-center shadow-md">
+                <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-md">
                   <RefreshCw className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h2 className="text-xl font-bold text-blue-900">Balance Transfer Details</h2>
-                  <p className="text-orange-700 text-sm font-medium">Enter details to check your benefits</p>
+                  <h2 className="text-xl font-bold text-slate-800">Balance Transfer Details</h2>
+                  <p className="text-teal-700 text-sm font-medium">Enter details to check your benefits</p>
                 </div>
               </div>
 
@@ -1453,39 +1453,39 @@ const DetailedCalculatorContent = () => {
             <div className="col-span-12 lg:col-span-6 space-y-6">
               
               {/* Top Summary Card */}
-              <div className="bg-gradient-to-br from-blue-900 to-blue-800 text-white rounded-3xl p-6 md:p-8 relative overflow-hidden border-2 border-orange-500/20">
-                 <div className="absolute top-0 right-0 w-48 h-48 bg-orange-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+              <div className="bg-gradient-to-br from-teal-700 to-teal-900 text-white rounded-3xl p-6 md:p-8 relative overflow-hidden border-2 border-amber-500/30 shadow-xl">
+                 <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
                  <div className="relative">
-                   <div className="text-orange-300 text-sm font-bold mb-2">NET IN HAND</div>
+                   <div className="text-amber-300 text-sm font-bold mb-2">NET IN HAND</div>
                    <div className="text-4xl font-bold mb-1">₹{formatCurrency(btNetInHand)}</div>
-                   <p className="text-blue-200 text-sm">Amount available after Balance Transfer</p>
+                   <p className="text-teal-200 text-sm">Amount available after Balance Transfer</p>
                  </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4 md:gap-6">
                  {/* Max EMI Capacity */}
-                 <div className="bg-blue-50 border-2 border-blue-200 rounded-3xl p-6 shadow-lg hover:shadow-xl hover:border-blue-300 transition-all">
-                   <div className="text-sm text-blue-700 font-semibold mb-2">Max EMI Capacity</div>
-                   <div className="text-2xl font-bold text-blue-900 mb-1">₹{formatCurrency(btMaxEmi)}</div>
-                   <div className="text-xs text-blue-600 font-semibold">New EMI Amount</div>
+                 <div className="bg-teal-50 border-2 border-teal-200 rounded-3xl p-6 shadow-lg hover:shadow-xl hover:border-teal-300 transition-all">
+                   <div className="text-sm text-teal-700 font-semibold mb-2">Max EMI Capacity</div>
+                   <div className="text-2xl font-bold text-slate-800 mb-1">₹{formatCurrency(btMaxEmi)}</div>
+                   <div className="text-xs text-teal-600 font-semibold">New EMI Amount</div>
                  </div>
 
                  {/* Per Lakh EMI */}
-                 <div className="bg-orange-50 border-2 border-orange-200 rounded-3xl p-6 shadow-lg hover:shadow-xl hover:border-orange-300 transition-all">
-                   <div className="text-sm text-orange-700 font-semibold mb-2">Per Lakh EMI</div>
-                   <div className="text-2xl font-bold text-orange-600 mb-1">₹{formatCurrency(btPerLakhEmi)}</div>
-                   <div className="text-xs text-orange-700 font-semibold">@ 10.50% for {btTenure} Years</div>
+                 <div className="bg-amber-50 border-2 border-amber-200 rounded-3xl p-6 shadow-lg hover:shadow-xl hover:border-amber-300 transition-all">
+                   <div className="text-sm text-amber-700 font-semibold mb-2">Per Lakh EMI</div>
+                   <div className="text-2xl font-bold text-amber-600 mb-1">₹{formatCurrency(btPerLakhEmi)}</div>
+                   <div className="text-xs text-amber-700 font-semibold">@ 10.50% for {btTenure} Years</div>
                  </div>
 
                  {/* Max Loan Amount */}
-                 <div className="bg-gradient-to-br from-blue-900 to-blue-800 border-2 border-orange-500/30 rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all col-span-2">
+                 <div className="bg-gradient-to-br from-indigo-600 to-indigo-800 border-2 border-teal-500/30 rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all col-span-2">
                    <div className="flex justify-between items-end">
                      <div>
-                       <div className="text-sm text-orange-300 font-semibold mb-2">Max Loan Eligibility</div>
+                       <div className="text-sm text-indigo-200 font-semibold mb-2">Max Loan Eligibility</div>
                        <div className="text-3xl font-bold text-white">₹{formatCurrency(btMaxLoan)}</div>
-                       <div className="text-xs text-blue-200 font-semibold mt-1">Total eligible amount based on your income</div>
+                       <div className="text-xs text-indigo-200 font-semibold mt-1">Total eligible amount based on your income</div>
                      </div>
-                     <Link href="/apply" className="bg-gradient-to-r from-orange-600 to-orange-500 text-white p-3 rounded-xl hover:shadow-lg hover:from-orange-700 hover:to-orange-600 transition-all">
+                     <Link href="/apply" className="bg-amber-500 text-slate-900 p-3 rounded-xl hover:bg-amber-400 transition-all font-bold shadow-lg">
                         <ArrowRight className="w-6 h-6" />
                      </Link>
                    </div>
@@ -1501,14 +1501,14 @@ const DetailedCalculatorContent = () => {
             
             {/* Inputs Column */}
             <div className="col-span-12 lg:col-span-7 space-y-6">
-               <div className="bg-blue-50/30 border border-blue-100 rounded-3xl p-6 md:p-8 shadow-sm">
+               <div className="bg-white/80 backdrop-blur-sm border border-teal-100 rounded-3xl p-6 md:p-8 shadow-lg">
                  <div className="flex items-center gap-3 mb-8">
-                   <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm">
-                     <PercentIcon className="w-6 h-6 text-blue-600" />
+                   <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center shadow-md">
+                     <PercentIcon className="w-6 h-6 text-white" />
                    </div>
                    <div>
-                     <h2 className="text-xl font-bold text-blue-900">Loan Details</h2>
-                     <p className="text-gray-500 text-sm">Input your current loan status</p>
+                     <h2 className="text-xl font-bold text-slate-800">Loan Details</h2>
+                     <p className="text-slate-500 text-sm">Input your current loan status</p>
                    </div>
                  </div>
 
@@ -1547,12 +1547,12 @@ const DetailedCalculatorContent = () => {
                </div>
 
                {/* Part Payments Inputs */}
-               <div className="bg-white border border-gray-200 rounded-3xl p-6 md:p-8 shadow-sm">
+               <div className="bg-white/80 backdrop-blur-sm border border-teal-100 rounded-3xl p-6 md:p-8 shadow-lg">
                  <div className="flex justify-between items-center mb-6">
-                    <h3 className="font-bold text-gray-900">Part Payments</h3>
+                    <h3 className="font-bold text-slate-800">Part Payments</h3>
                     <button 
                       onClick={addPartPaymentRow}
-                      className="flex items-center gap-2 text-sm font-bold text-blue-600 hover:text-blue-800"
+                      className="flex items-center gap-2 text-sm font-bold text-teal-600 hover:text-teal-700"
                     >
                       <Plus className="w-4 h-4" /> Add Payment
                     </button>
@@ -1566,7 +1566,7 @@ const DetailedCalculatorContent = () => {
                        onClick={() => setPpReductionType('emi')}
                        className={`flex-1 px-4 py-2.5 rounded-lg text-sm font-semibold transition-all ${
                          ppReductionType === 'emi'
-                           ? 'bg-white text-blue-900 shadow-sm'
+                           ? 'bg-white text-teal-700 shadow-sm'
                            : 'text-gray-500 hover:text-gray-700'
                        }`}
                      >
@@ -1576,7 +1576,7 @@ const DetailedCalculatorContent = () => {
                        onClick={() => setPpReductionType('tenure')}
                        className={`flex-1 px-4 py-2.5 rounded-lg text-sm font-semibold transition-all ${
                          ppReductionType === 'tenure'
-                           ? 'bg-white text-blue-900 shadow-sm'
+                           ? 'bg-white text-teal-700 shadow-sm'
                            : 'text-gray-500 hover:text-gray-700'
                        }`}
                      >
@@ -1599,7 +1599,7 @@ const DetailedCalculatorContent = () => {
                            type="number" 
                            value={payment.amount}
                            onChange={(e) => updatePartPayment(index, 'amount', Number(e.target.value))}
-                           className="w-full p-2 rounded-lg border border-gray-200 font-bold text-gray-900 focus:outline-none focus:border-blue-500"
+                           className="w-full p-2 rounded-lg border border-gray-200 font-bold text-gray-900 focus:outline-none focus:border-teal-500"
                          />
                        </div>
                        <div className="flex-1 w-full">
@@ -1608,7 +1608,7 @@ const DetailedCalculatorContent = () => {
                            type="number" 
                            value={payment.month}
                            onChange={(e) => updatePartPayment(index, 'month', Number(e.target.value))}
-                           className="w-full p-2 rounded-lg border border-gray-200 font-bold text-gray-900 focus:outline-none focus:border-blue-500"
+                           className="w-full p-2 rounded-lg border border-gray-200 font-bold text-gray-900 focus:outline-none focus:border-teal-500"
                          />
                        </div>
                        {partPayments.length > 1 && (
@@ -1625,7 +1625,7 @@ const DetailedCalculatorContent = () => {
 
                  <button 
                    onClick={calculatePartPayment}
-                   className="w-full mt-6 bg-blue-600 text-white font-bold py-3 rounded-xl hover:bg-blue-700 transition-colors shadow-lg"
+                   className="w-full mt-6 bg-teal-600 text-white font-bold py-3 rounded-xl hover:bg-teal-700 transition-colors shadow-lg"
                  >
                    Calculate Savings
                  </button>
@@ -1635,7 +1635,7 @@ const DetailedCalculatorContent = () => {
             {/* Results Column */}
             <div className="col-span-12 lg:col-span-5 space-y-6">
               {/* Summary Card */}
-              <div className="bg-blue-900 text-white rounded-3xl p-8 relative overflow-hidden">
+              <div className="bg-gradient-to-br from-teal-700 to-teal-900 text-white rounded-3xl p-8 relative overflow-hidden shadow-xl">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
                 
                 <div className="relative space-y-8">
@@ -1679,7 +1679,7 @@ const DetailedCalculatorContent = () => {
 
                    {/* EMI Reduction Display */}
                    {ppReductionType === 'emi' && ppResults.schedule.length > 0 && (
-                     <div className="bg-blue-50 border-2 border-blue-200 p-6 rounded-2xl">
+                     <div className="bg-teal-50 border-2 border-teal-200 p-6 rounded-2xl">
                        <div className="text-sm font-semibold text-blue-800 mb-2">EMI Reduction</div>
                        <div className="flex items-center justify-between">
                          <span className="text-gray-600 text-sm">Original EMI:</span>
@@ -1692,7 +1692,7 @@ const DetailedCalculatorContent = () => {
                      </div>
                    )}
 
-                   <Link href="/apply" className="block w-full bg-blue-600 text-white text-center font-bold py-3 rounded-xl hover:bg-blue-500 transition-colors">
+                   <Link href="/apply" className="block w-full bg-teal-600 text-white text-center font-bold py-3 rounded-xl hover:bg-teal-500 transition-colors">
                      Apply For Loan
                    </Link>
                 </div>
@@ -1706,7 +1706,7 @@ const DetailedCalculatorContent = () => {
                 <div className="overflow-x-auto">
                   <table className="w-full text-sm">
                     <thead>
-                      <tr className="bg-blue-900 text-white">
+                      <tr className="bg-teal-700 text-white">
                         <th className="py-3 px-4 text-left rounded-tl-lg">Month</th>
                         <th className="py-3 px-4 text-right">Part Payment (₹)</th>
                         <th className="py-3 px-4 text-right">Remaining Balance (₹)</th>
@@ -1719,7 +1719,7 @@ const DetailedCalculatorContent = () => {
                           <td className="py-3 px-4 font-medium text-gray-900">{row.month}</td>
                           <td className="py-3 px-4 text-right font-medium text-gray-700">{row.partPayment > 0 ? formatCurrency(row.partPayment) : '0'}</td>
                           <td className="py-3 px-4 text-right text-gray-500">{formatCurrency(row.balance)}</td>
-                          <td className="py-3 px-4 text-right font-bold text-blue-600">{formatCurrency(row.emi)}</td>
+                          <td className="py-3 px-4 text-right font-bold text-teal-600">{formatCurrency(row.emi)}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -1739,7 +1739,7 @@ const DetailedCalculatorContent = () => {
                         className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${
                           ppCurrentPage === 1
                             ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                            : 'bg-blue-50 text-blue-700 hover:bg-blue-100'
+                            : 'bg-teal-50 text-teal-700 hover:bg-teal-100'
                         }`}
                       >
                         <ChevronLeft className="w-4 h-4" /> Previous
@@ -1759,7 +1759,7 @@ const DetailedCalculatorContent = () => {
                                 onClick={() => setPpCurrentPage(page)}
                                 className={`w-8 h-8 rounded-lg text-sm font-semibold transition-colors ${
                                   ppCurrentPage === page
-                                    ? 'bg-blue-900 text-white'
+                                    ? 'bg-teal-600 text-white'
                                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                                 }`}
                               >
@@ -1786,7 +1786,7 @@ const DetailedCalculatorContent = () => {
                         className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${
                           ppCurrentPage === ppTotalPages
                             ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                            : 'bg-blue-50 text-blue-700 hover:bg-blue-100'
+                            : 'bg-teal-50 text-teal-700 hover:bg-teal-100'
                         }`}
                       >
                         Next <ChevronRight className="w-4 h-4" />
@@ -1798,7 +1798,7 @@ const DetailedCalculatorContent = () => {
                 <div className="mt-6 flex justify-end">
                   <button 
                     onClick={downloadPartPaymentPDF}
-                    className="flex items-center gap-2 bg-blue-900 hover:bg-blue-800 text-white px-6 py-3 rounded-xl font-bold text-sm transition-colors shadow-md"
+                    className="flex items-center gap-2 bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-xl font-bold text-sm transition-colors shadow-md"
                   >
                     <Download className="w-4 h-4" /> Download Report PDF
                   </button>
@@ -1863,7 +1863,7 @@ const SliderInput = ({ label, value, setValue, min, max, step, prefix = '', suff
             <p className="text-xs text-gray-500 font-semibold mt-0.5">{description}</p>
           )}
         </div>
-        <div className="bg-white px-4 py-2 rounded-xl border-2 border-gray-200 focus-within:border-blue-500 transition-all">
+        <div className="bg-white px-4 py-2 rounded-xl border-2 border-slate-200 focus-within:border-teal-500 transition-all">
           <input
             type="text"
             value={displayValue}
@@ -1882,7 +1882,7 @@ const SliderInput = ({ label, value, setValue, min, max, step, prefix = '', suff
         step={step}
         value={value}
         onChange={(e) => setValue(Number(e.target.value))}
-        className="w-full h-2 bg-gray-200 rounded-full appearance-none cursor-pointer accent-blue-600"
+        className="w-full h-2 bg-gray-200 rounded-full appearance-none cursor-pointer accent-teal-600"
       />
     </div>
   );

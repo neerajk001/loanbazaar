@@ -106,4 +106,16 @@ export const authOptions: AuthOptions = {
 
 const handler = NextAuth(authOptions);
 
-export { handler as GET, handler as POST };
+async function wrappedHandler(req: Request, ctx: { params?: Promise<{ nextauth?: string[] }> }) {
+  try {
+    return await handler(req, ctx);
+  } catch (error) {
+    console.error('[next-auth] Route error:', error);
+    return Response.json(
+      { error: 'ConfigurationError', message: 'Authentication is not properly configured' },
+      { status: 500 }
+    );
+  }
+}
+
+export { wrappedHandler as GET, wrappedHandler as POST };
