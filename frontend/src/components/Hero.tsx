@@ -216,11 +216,11 @@ const Hero = () => {
               </p>
 
               <a
-                href="tel:+919665248445"
+                href="tel:+919870802207"
                 className="flex items-center justify-center gap-2 w-full bg-green-700 text-white font-bold py-3.5 rounded-xl hover:bg-green-800 transition-colors shadow-lg shadow-green-200 mb-3"
               >
                 <Phone className="h-5 w-5" />
-                Call +91 96652 48445
+                Call +91 98708 02207
               </a>
 
               <p className="text-xs text-gray-400">

@@ -122,7 +122,7 @@ export default function ContactPage() {
             </div>
             <h3 className="font-bold text-gray-900 mb-2">Call Us</h3>
             <p className="text-gray-600 text-sm mb-2">Mon - Sat</p>
-            <p className="text-blue-600 font-semibold">9588833303</p>
+            <p className="text-blue-600 font-semibold">9870802207</p>
           </div>
 
           {/* Email Card */}
@@ -151,7 +151,7 @@ export default function ContactPage() {
               <MapPin className="h-6 w-6 text-white" />
             </div>
             <h3 className="font-bold text-gray-900 mb-2">Visit Us</h3>
-            <p className="text-gray-600 text-sm">Vasai West, Maharashtra 401202</p>
+            <p className="text-gray-600 text-sm">Hindrajesthan blgd office no 236 , 238 , 240 . 2 nd floor Dadar East near kailas lasiwala and opp Chetan bar Dadar East Mumbai 400014</p>
           </div>
         </div>
 
@@ -296,7 +296,7 @@ export default function ContactPage() {
               </div>
               <h3 className="font-bold text-gray-900 mb-4">Our Office</h3>
               <p className="text-gray-600 mb-4 leading-relaxed">
-                B-203, 204, 205, Lawrence Trade Center, Manikpur Road, Near Madhuram Hotel, Vasai West 401202
+                Hindrajesthan blgd office no 236 , 238 , 240 . 2 nd floor Dadar East near kailas lasiwala and opp Chetan bar Dadar East Mumbai 400014
               </p>
               <div className="pt-4 border-t border-blue-100">
                 <p className="text-sm text-blue-600 font-medium mb-2">Maharashtra, India</p>
@@ -307,7 +307,7 @@ export default function ContactPage() {
             <div className="bg-white rounded-2xl shadow-sm border-2 border-orange-100 p-2">
               <div className="w-full h-[300px] rounded-xl overflow-hidden">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3764.1234567890123!2d72.82345678901234!3d19.456789012345678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDI3JzI0LjQiTiA3MsKwNDknMjQuNCJF!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                  src="https://www.google.com/maps?q=Hindrajesthan+building+office+236+238+240+Dadar+East+Mumbai+400014&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}

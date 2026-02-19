@@ -68,19 +68,19 @@ const Footer = () => {
               </li>
               <li className="flex items-start gap-2 hover:text-white transition-colors">
                 <Phone className="h-5 w-5 mt-0.5 flex-shrink-0 text-orange-500" />
-                <a href="tel:+919588833303" className="hover:text-white transition-colors">
-                  +91 95888 33303
+                <a href="tel:+919870802207" className="hover:text-white transition-colors">
+                  +91 98708 02207
                 </a>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="h-5 w-5 mt-0.5 flex-shrink-0 text-orange-500" />
                 <a
-                  href="https://www.google.com/maps/search/?api=1&query=Mumbai,+India"
+                  href="https://www.google.com/maps/search/?api=1&query=Hindrajesthan+blgd+office+no+236+238+240+2nd+floor+Dadar+East+Mumbai+400014"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-white transition-colors"
                 >
-                  Mumbai, India
+                  Hindrajesthan blgd office no 236 , 238 , 240 . 2 nd floor Dadar East near kailas lasiwala and opp Chetan bar Dadar East Mumbai 400014
                 </a>
               </li>
             </ul>
