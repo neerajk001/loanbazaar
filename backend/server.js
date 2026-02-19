@@ -27,9 +27,14 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-// Session configuration
+// Session configuration - require SESSION_SECRET in production
+const sessionSecret = process.env.SESSION_SECRET;
+if (process.env.NODE_ENV === 'production' && !sessionSecret) {
+  console.error('FATAL: SESSION_SECRET must be set in production.');
+  process.exit(1);
+}
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'fallback-secret-key-change-in-production',
+  secret: sessionSecret || 'dev-only-fallback',
   resave: false,
   saveUninitialized: false,
   cookie: {

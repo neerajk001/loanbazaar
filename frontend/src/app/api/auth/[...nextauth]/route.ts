@@ -104,9 +104,20 @@ export const authOptions: AuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
 };
 
+// In production, NEXTAUTH_SECRET is required for JWT signing
+if (process.env.NODE_ENV === 'production' && !process.env.NEXTAUTH_SECRET) {
+  console.error('FATAL: NEXTAUTH_SECRET must be set in production.');
+}
+
 const handler = NextAuth(authOptions);
 
 async function wrappedHandler(req: Request, ctx: { params?: Promise<{ nextauth?: string[] }> }) {
+  if (process.env.NODE_ENV === 'production' && !process.env.NEXTAUTH_SECRET) {
+    return Response.json(
+      { error: 'ConfigurationError', message: 'Authentication is not properly configured' },
+      { status: 500 }
+    );
+  }
   try {
     return await handler(req, ctx);
   } catch (error) {
