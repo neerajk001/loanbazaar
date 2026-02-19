@@ -19,6 +19,8 @@ const corsOptions = {
     'http://localhost:3002',
     'http://localhost:3003',
     'https://loanbazaar.onrender.com',
+    'https://loanbaazaar.com',
+    'https://www.loanbaazaar.com',
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
