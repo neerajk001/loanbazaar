@@ -21,6 +21,10 @@ const corsOptions = {
     'https://loanbazaar.onrender.com',
     'https://loanbaazaar.com',
     'https://www.loanbaazaar.com',
+    'https://loansarathi.com',
+    'https://www.loansarathi.com',
+    'https://smartsolutionsmumbai.com',
+    'https://www.smartsolutionsmumbai.com',
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
@@ -60,8 +64,8 @@ const loanProductsRoutes = require('./routes/loanProducts');
 
 // Health check route
 app.get('/api/health', (req, res) => {
-  res.json({ 
-    status: 'OK', 
+  res.json({
+    status: 'OK',
     message: 'LoanBazaar Backend API is running',
     timestamp: new Date().toISOString()
   });
