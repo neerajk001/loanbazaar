@@ -21,8 +21,6 @@ const corsOptions = {
     'https://loanbazaar.onrender.com',
     'https://loanbaazaar.com',
     'https://www.loanbaazaar.com',
-    'https://loansarathi.com',
-    'https://www.loansarathi.com',
     'https://ssolutions.in',
     'https://www.ssolutions.in',
   ],
