@@ -1,0 +1,20 @@
+
+> loanbazaar-backend@1.0.0 start
+> node server.js
+
+🚀 Server is running on port 6000
+📍 API: http://localhost:6000/api
+🌍 Environment: development
+node:internal/dns/promises:294
+    this.reject(new DNSException(err, this.bindingName, this.hostname));
+                ^
+
+Error: querySrv ENOTFOUND _mongodb._tcp.cluster0.c0h57tg.mongodb.net
+    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:294:17) {
+  errno: undefined,
+  code: 'ENOTFOUND',
+  syscall: 'querySrv',
+  hostname: '_mongodb._tcp.cluster0.c0h57tg.mongodb.net'
+}
+
+Node.js v23.11.1

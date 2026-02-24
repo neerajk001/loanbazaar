@@ -2,7 +2,7 @@
 function detectSource(req) {
   // 1. Check explicit header first (most reliable)
   const appSource = req.headers['x-application-source'];
-  if (appSource === 'smartmumbaisolutions' || appSource === 'smartmumbai') {
+  if (appSource === 'smartmumbaisolutions' || appSource === 'smartmumbai' || appSource === 'ssolutions') {
     return 'smartmumbaisolutions';
   }
 
@@ -12,7 +12,7 @@ function detectSource(req) {
   const host = req.headers['host'] || '';
   const allHeaders = `${origin} ${referer} ${host}`.toLowerCase();
 
-  const smartKeywords = ['smartmumbaisolutions', 'smartmumbai', 'smartsolutionsmumbai', 'smartsolutions'];
+  const smartKeywords = ['smartmumbaisolutions', 'smartmumbai', 'smartsolutionsmumbai', 'smartsolutions', 'ssolutions.in', 'ssolutions'];
   if (smartKeywords.some(keyword => allHeaders.includes(keyword))) {
     return 'smartmumbaisolutions';
   }

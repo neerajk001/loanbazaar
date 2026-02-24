@@ -1,0 +1,12 @@
+--- Testing Ports 6000 and 6001 ---
+
+✅ [PORT 6000] /api/health (Status: undefined) -> undefined
+✅ [PORT 6000] /api/gallery/health (Status: undefined) -> undefined
+✅ [PORT 6000] /api/gallery/events (Status: undefined) -> undefined
+✅ [PORT 6000] /api/loan-products (Status: undefined) -> undefined
+✅ [PORT 6000] /api/loan-products/personal (Status: undefined) -> undefined
+✅ [PORT 6001] /api/health (Status: undefined) -> undefined
+✅ [PORT 6001] /api/gallery/health (Status: undefined) -> undefined
+✅ [PORT 6001] /api/gallery/events (Status: undefined) -> undefined
+✅ [PORT 6001] /api/loan-products (Status: undefined) -> undefined
+✅ [PORT 6001] /api/loan-products/personal (Status: undefined) -> undefined
