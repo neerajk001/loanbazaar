@@ -40,12 +40,12 @@ const Calculator = () => {
     }
   }, [amount, rate, years]);
 
-  // Eligibility Calculation (Simple logic: 50% FOIR)
+  // Eligibility Calculation (70% FOIR, 11% ROI, 6 years)
   useEffect(() => {
-    const maxEmi = income * 0.5 - existingEmi;
-    // Reverse calculate loan amount from maxEmi assuming 10.5% for 5 years (standard)
-    const r = 10.5 / 12 / 100;
-    const n = 5 * 12;
+    const maxEmi = income * 0.7 - existingEmi;
+    // Reverse calculate loan amount from maxEmi assuming 11.0% for 6 years
+    const r = 11.0 / 12 / 100;
+    const n = 6 * 12;
     if (maxEmi > 0) {
       const possibleLoan = maxEmi * ((Math.pow(1 + r, n) - 1) / (r * Math.pow(1 + r, n)));
       setEligibleAmount(Math.round(possibleLoan));
@@ -153,9 +153,20 @@ const Calculator = () => {
                 <div className="space-y-10">
                   <SliderInput label="Monthly Income" value={income} setValue={setIncome} min={15000} max={500000} step={1000} prefix="₹" />
                   <SliderInput label="Current EMIs" value={existingEmi} setValue={setExistingEmi} min={0} max={200000} step={1000} prefix="₹" />
-                  <div className="bg-amber-50 p-4 rounded-xl text-sm text-amber-800 border border-amber-100 flex items-start gap-2">
-                    <span className="text-xl">💡</span>
-                    Note: Eligibility is estimated based on standard bank policies (50% FOIR).
+                  <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.1)]">
+                    <div className="flex justify-between items-center mb-4 text-gray-700">
+                      <div className="text-[15px]">Income: <span className="font-semibold text-gray-900">₹{formatCurrency(income)}</span></div>
+                      <div className="text-[15px]">Existing EMI: <span className="font-semibold text-gray-900">₹{formatCurrency(existingEmi)}</span></div>
+                    </div>
+                    <div className="border-t border-dashed border-gray-200 pt-3 flex flex-wrap gap-2.5 items-center text-sm text-gray-600">
+                      <span className="text-blue-600 font-bold text-[15px]">Max EMI: ₹{formatCurrency(Math.max(0, income * 0.7 - existingEmi))}</span>
+                      <span className="text-gray-300 text-xs">•</span>
+                      <span>11.00% ROI</span>
+                      <span className="text-gray-300 text-xs">•</span>
+                      <span>6 years</span>
+                      <span className="text-gray-300 text-xs">•</span>
+                      <span>FOIR 70%</span>
+                    </div>
                   </div>
                 </div>
                 <ResultBox

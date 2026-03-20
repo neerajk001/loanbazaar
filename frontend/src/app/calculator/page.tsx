@@ -72,7 +72,7 @@ const DetailedCalculatorContent = () => {
   // Eligibility Calculator State
   const [income, setIncome] = useState<string>('50000'); // Default: 50k
   const [existingEmi, setExistingEmi] = useState<string>('10000'); // Default: 10k
-  const [eligTenure, setEligTenure] = useState<string>('5'); // Default: 5 years
+  const [eligTenure, setEligTenure] = useState<string>('6'); // Default: 6 years
   const [eligibleAmount, setEligibleAmount] = useState(0);
   const [maxEmiCapacity, setMaxEmiCapacity] = useState(0);
   const [applicableROI, setApplicableROI] = useState(11.0);
@@ -422,7 +422,7 @@ const DetailedCalculatorContent = () => {
     const existingEmiNum = Number(existingEmi) || 0;
     const eligTenureNum = Number(eligTenure) || 1;
     
-    const foir = 0.50;
+    const foir = 0.70;
     const maxMonthlyEmi = (incomeNum * foir) - existingEmiNum;
     setMaxEmiCapacity(Math.round(Math.max(0, maxMonthlyEmi)));
     
@@ -1347,6 +1347,22 @@ const DetailedCalculatorContent = () => {
                     placeholder="1"
                   />
                   <p className="text-xs text-gray-500 mt-2">Repayment period you prefer</p>
+                </div>
+                
+                <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.1)] mt-8">
+                  <div className="flex justify-between items-center mb-4 text-gray-700">
+                    <div className="text-[15px]">Income: <span className="font-semibold text-gray-900">₹{formatCurrency(Number(income) || 0)}</span></div>
+                    <div className="text-[15px]">Existing EMI: <span className="font-semibold text-gray-900">₹{formatCurrency(Number(existingEmi) || 0)}</span></div>
+                  </div>
+                  <div className="border-t border-dashed border-gray-200 pt-3 flex flex-wrap gap-2.5 items-center text-sm text-gray-600">
+                    <span className="text-blue-600 font-bold text-[15px]">Max EMI: ₹{formatCurrency(Math.max(0, (Number(income) || 0) * 0.7 - (Number(existingEmi) || 0)))}</span>
+                    <span className="text-gray-300 text-xs">•</span>
+                    <span>{applicableROI.toFixed(2)}% ROI</span>
+                    <span className="text-gray-300 text-xs">•</span>
+                    <span>{eligTenure || '0'} years</span>
+                    <span className="text-gray-300 text-xs">•</span>
+                    <span>FOIR 70%</span>
+                  </div>
                 </div>
               </div>
             </div>
