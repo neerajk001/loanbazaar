@@ -161,13 +161,17 @@ const Products = () => {
   return (
     <div id="products" className="py-6">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-left mb-6 pl-4">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-            Loan
-          </h1>
-          <h2 className="text-xl font-bold text-gray-900">
-            Choose from our wide range of loan products
+        <div className="text-center max-w-3xl mx-auto mb-16 px-4">
+          <span className="inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-sm font-bold tracking-wide text-blue-700 mb-4 shadow-sm relative overflow-hidden">
+            <span className="absolute inset-0 bg-blue-100 opacity-50 animate-pulse"></span>
+            <span className="relative z-10">✨ OUR LOAN SUITE</span>
+          </span>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">
+            Choose Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Perfect Loan</span>
           </h2>
+          <p className="text-lg text-slate-600 leading-relaxed">
+            Compare options from 20+ top banks & NBFCs with complete transparency and expert guidance. Pick the capital you need to scale up today.
+          </p>
         </div>
 
         {/* First 3 static products */}

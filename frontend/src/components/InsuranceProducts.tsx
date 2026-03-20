@@ -100,13 +100,17 @@ const InsuranceProducts = () => {
   return (
     <div id="insurance" className="py-6">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-left mb-6 pl-4">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-            Insurance
-          </h1>
-          <h2 className="text-xl font-bold text-gray-900">
-            Comprehensive protection for you and your family
+        <div className="text-center max-w-3xl mx-auto mb-16 px-4">
+          <span className="inline-flex items-center rounded-full border border-orange-200 bg-orange-50 px-4 py-1.5 text-sm font-bold tracking-wide text-orange-700 mb-4 shadow-sm relative overflow-hidden">
+            <span className="absolute inset-0 bg-orange-100 opacity-50 animate-pulse"></span>
+            <span className="relative z-10">🛡️ COMPREHENSIVE COVERAGE</span>
+          </span>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">
+            Protect What <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500">Matters Most</span>
           </h2>
+          <p className="text-lg text-slate-600 leading-relaxed">
+            Secure your future with our curated insurance policies. Enjoy instant policy issuance, cashless claims, and dedicated full-time support.
+          </p>
         </div>
 
         {/* First 3 static products */}

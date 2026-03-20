@@ -132,7 +132,7 @@ export default function ContactPage() {
             </div>
             <h3 className="font-bold text-gray-900 mb-2">Email Us</h3>
             <p className="text-gray-600 text-sm mb-2">Quick response</p>
-            <p className="text-orange-600 font-semibold text-sm">info@loansarathi.com</p>
+            <p className="text-orange-600 font-semibold text-sm">info@ssolutions.in</p>
           </div>
 
           {/* Working Hours Card */}

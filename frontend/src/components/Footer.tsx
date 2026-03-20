@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-6">
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <img src="/company.png" alt="loanbazaar Logo" className="h-16 w-auto" />
+              <img src="/company.png" alt="loanbazaar Logo" className="h-16 w-auto brightness-0 invert" />
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">
               Your trusted partner for all financial needs. We make borrowing simple, transparent, and fast.
@@ -62,8 +62,8 @@ const Footer = () => {
             <ul className="space-y-3 text-gray-400">
               <li className="flex items-start gap-2 hover:text-white transition-colors">
                 <Mail className="h-5 w-5 mt-0.5 flex-shrink-0 text-orange-500" />
-                <a href="mailto:info@loansarathi.com" className="hover:text-white transition-colors">
-                  info@loansarathi.com
+                <a href="mailto:info@ssolutions.in" className="hover:text-white transition-colors">
+                  info@ssolutions.in
                 </a>
               </li>
               <li className="flex items-start gap-2 hover:text-white transition-colors">
