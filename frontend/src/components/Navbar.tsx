@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X, Info, Calculator, CheckCircle, Phone, ChevronDown, Home, Wallet, Shield } from 'lucide-react';
+import { Menu, X, Info, Calculator, CheckCircle, Phone, ChevronDown, Home, Wallet, Shield, Image as ImageIcon } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
 import Image from 'next/image';
@@ -199,6 +199,7 @@ const Navbar = () => {
             </div>
 
             <Link href="/calculator" className={`${isActive('/calculator')} whitespace-nowrap transition-colors text-sm`}>Calculator</Link>
+            <Link href="/gallery" className={`${isActive('/gallery')} whitespace-nowrap transition-colors text-sm`}>Gallery</Link>
             <Link href="/contact" className={`${isActive('/contact')} whitespace-nowrap transition-colors text-sm`}>Contact Us</Link>
           </div>
 
@@ -222,7 +223,7 @@ const Navbar = () => {
         {/* Mobile Menu Overlay */}
         {
           isOpen && (
-            <div className="md:hidden fixed inset-x-0 top-[80px] mx-4 p-4 bg-gray-900/95 backdrop-blur-md rounded-3xl border border-white/10 overflow-y-auto animate-in slide-in-from-top-5 duration-200 shadow-2xl">
+            <div className="md:hidden fixed inset-x-0 top-20 mx-4 p-4 bg-gray-900/95 backdrop-blur-md rounded-3xl border border-white/10 overflow-y-auto animate-in slide-in-from-top-5 duration-200 shadow-2xl">
               <div className="flex flex-col space-y-4">
                 <Link
                   href="/"
@@ -311,6 +312,17 @@ const Navbar = () => {
                 >
                   <Calculator className="h-5 w-5" />
                   Calculator
+                </Link>
+
+                <Link
+                  href="/gallery"
+                  className={`flex items-center gap-3 px-4 py-3 rounded-xl text-base transition-all
+                    ${pathname === '/gallery'
+                      ? 'bg-white/10 text-white font-bold'
+                      : 'text-gray-400 font-medium hover:bg-white/5 hover:text-white'}`}
+                >
+                  <ImageIcon className="h-5 w-5" />
+                  Gallery
                 </Link>
 
                 <Link

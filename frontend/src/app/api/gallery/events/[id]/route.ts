@@ -22,12 +22,20 @@ export async function GET(
     const db = client.db('loan-sarathi');
     const collection = db.collection<GalleryEvent>(GALLERY_EVENTS_COLLECTION);
 
-    // Find event by ObjectId
-    const event = await collection.findOne({
+    // Find event by ObjectId with detected source first
+    let event = await collection.findOne({
       _id: new ObjectId(id),
       source: source,
       isPublished: true,
     });
+
+    // Backward compatibility: if event exists under another source, still return it.
+    if (!event) {
+      event = await collection.findOne({
+        _id: new ObjectId(id),
+        isPublished: true,
+      });
+    }
 
     if (!event) {
       return NextResponse.json(

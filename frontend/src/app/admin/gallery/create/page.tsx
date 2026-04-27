@@ -28,7 +28,6 @@ export default function CreateGalleryEvent() {
     location: '',
     isFeatured: false,
     isPublished: true,
-    source: 'smartmumbaisolutions',
   });
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -85,7 +84,6 @@ export default function CreateGalleryEvent() {
       formDataToSend.append('location', formData.location);
       formDataToSend.append('isFeatured', formData.isFeatured.toString());
       formDataToSend.append('isPublished', formData.isPublished.toString());
-      formDataToSend.append('source', formData.source);
 
       // Append all images
       selectedFiles.forEach((file, index) => {

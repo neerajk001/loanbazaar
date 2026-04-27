@@ -24,28 +24,42 @@ export async function GET(request: NextRequest) {
     const db = client.db('loan-sarathi');
     const collection = db.collection<GalleryEvent>(GALLERY_EVENTS_COLLECTION);
 
-    // Build query
-    const query: any = {
-      source: source,
+    // Build query. Prefer source-specific events first.
+    const baseQuery: any = {
       isPublished: true,
+    };
+    const sourceQuery: any = {
+      ...baseQuery,
+      source: source,
     };
 
     if (featured === 'true') {
-      query.isFeatured = true;
+      sourceQuery.isFeatured = true;
+      baseQuery.isFeatured = true;
     }
 
-    console.log('[Gallery API] MongoDB query:', JSON.stringify(query));
+    console.log('[Gallery API] MongoDB source query:', JSON.stringify(sourceQuery));
 
-    // Fetch events
-    const events = await collection
-      .find(query)
+    // Fetch source-specific events first
+    let events = await collection
+      .find(sourceQuery)
       .sort({ eventDate: -1, displayOrder: 1 })
       .skip(offset)
       .limit(limit)
       .toArray();
 
-    // Count total
-    const total = await collection.countDocuments(query);
+    // Backward compatibility: if no source-specific events, fall back to all published.
+    if (events.length === 0) {
+      console.log('[Gallery API] No source-matched events found, falling back to all published events');
+      events = await collection
+        .find(baseQuery)
+        .sort({ eventDate: -1, displayOrder: 1 })
+        .skip(offset)
+        .limit(limit)
+        .toArray();
+    }
+
+    const total = events.length;
 
     console.log(`[Gallery API] Found ${events.length} events (total: ${total})`);
 
