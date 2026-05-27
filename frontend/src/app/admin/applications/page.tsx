@@ -39,6 +39,7 @@ export default function ApplicationsPage() {
   const [sourceFilter, setSourceFilter] = useState('all');
   const [search, setSearch] = useState('');
   const [applications, setApplications] = useState<Application[]>([]);
+  const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState({
     total: 0,
@@ -96,6 +97,7 @@ export default function ApplicationsPage() {
         }
         
         setApplications(filteredApps);
+        setSelectedIds([]); // Clear selection on new fetch
         if (data.stats) {
           setStats(data.stats);
         }
@@ -225,6 +227,40 @@ export default function ApplicationsPage() {
     }
   };
 
+  const handleBulkDelete = async () => {
+    if (!selectedIds.length) return;
+    if (!confirm(`Are you sure you want to delete ${selectedIds.length} applications?`)) return;
+    
+    try {
+      setLoading(true);
+      await Promise.all(
+        selectedIds.map(id =>
+          fetch(`/api/admin/applications/${id}`, { method: 'DELETE' })
+        )
+      );
+      setSelectedIds([]);
+      fetchApplications();
+    } catch (error) {
+      console.error('Error bulk deleting:', error);
+      alert('Error deleting some applications');
+      setLoading(false);
+    }
+  };
+
+  const toggleSelectAll = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.checked) {
+      setSelectedIds(applications.map(app => app.applicationId || app.id));
+    } else {
+      setSelectedIds([]);
+    }
+  };
+
+  const toggleSelectOne = (id: string) => {
+    setSelectedIds(prev => 
+      prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]
+    );
+  };
+
   return (
     <div className="space-y-6">
       {/* Page Header */}
@@ -233,10 +269,21 @@ export default function ApplicationsPage() {
           <h1 className="text-3xl font-bold text-gray-900">Applications</h1>
           <p className="text-gray-500 mt-1">Manage and review loan applications</p>
         </div>
-        <button className="flex items-center gap-2 px-4 py-2.5 bg-gray-900 text-white rounded-xl font-semibold hover:bg-gray-800 transition-colors">
-          <Download className="w-4 h-4" />
-          Export Data
-        </button>
+        <div className="flex items-center gap-3">
+          {selectedIds.length > 0 && (
+            <button 
+              onClick={handleBulkDelete}
+              className="flex items-center gap-2 px-4 py-2.5 bg-red-600 text-white rounded-xl font-semibold hover:bg-red-700 transition-colors"
+            >
+              <Trash2 className="w-4 h-4" />
+              Delete Selected ({selectedIds.length})
+            </button>
+          )}
+          <button className="flex items-center gap-2 px-4 py-2.5 bg-gray-900 text-white rounded-xl font-semibold hover:bg-gray-800 transition-colors">
+            <Download className="w-4 h-4" />
+            Export Data
+          </button>
+        </div>
       </div>
 
       {/* Filters & Search */}
@@ -326,6 +373,14 @@ export default function ApplicationsPage() {
           <table className="w-full">
             <thead>
               <tr className="bg-gray-50 border-b border-gray-100">
+                <th className="px-6 py-4 w-12 text-center">
+                  <input 
+                    type="checkbox" 
+                    className="w-4 h-4 rounded border-gray-300 text-gray-900 focus:ring-gray-900 cursor-pointer"
+                    checked={applications.length > 0 && selectedIds.length === applications.length}
+                    onChange={toggleSelectAll}
+                  />
+                </th>
                 <th className="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Applicant</th>
                 <th className="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Source</th>
                 <th className="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Loan Details</th>
@@ -339,20 +394,28 @@ export default function ApplicationsPage() {
             <tbody className="divide-y divide-gray-50">
               {loading ? (
                 <tr>
-                  <td colSpan={7} className="px-6 py-12 text-center">
+                  <td colSpan={8} className="px-6 py-12 text-center">
                     <Loader2 className="h-8 w-8 animate-spin text-gray-400 mx-auto" />
                     <p className="text-gray-500 mt-2">Loading applications...</p>
                   </td>
                 </tr>
               ) : applications.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="px-6 py-12 text-center">
+                  <td colSpan={8} className="px-6 py-12 text-center">
                     <p className="text-gray-500">No applications found</p>
                   </td>
                 </tr>
               ) : (
                 applications.map((app) => (
-                  <tr key={app.applicationId || app.id} className="hover:bg-gray-50/50 transition-colors">
+                  <tr key={app.applicationId || app.id} className={`hover:bg-gray-50/50 transition-colors ${selectedIds.includes(app.applicationId || app.id) ? 'bg-gray-50' : ''}`}>
+                    <td className="px-6 py-4 text-center">
+                      <input 
+                        type="checkbox" 
+                        className="w-4 h-4 rounded border-gray-300 text-gray-900 focus:ring-gray-900 cursor-pointer"
+                        checked={selectedIds.includes(app.applicationId || app.id)}
+                        onChange={() => toggleSelectOne(app.applicationId || app.id)}
+                      />
+                    </td>
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-4">
                         <div className="w-11 h-11 bg-gray-100 rounded-xl flex items-center justify-center font-bold text-gray-600">
