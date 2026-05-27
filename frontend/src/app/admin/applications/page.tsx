@@ -12,7 +12,8 @@ import {
   Download,
   SlidersHorizontal,
   Loader2,
-  Globe
+  Globe,
+  Trash2
 } from 'lucide-react';
 
 interface Application {
@@ -207,6 +208,23 @@ export default function ApplicationsPage() {
     }
   };
 
+  const handleDelete = async (app: Application) => {
+    if (!confirm('Are you sure you want to delete this application?')) return;
+    try {
+      const response = await fetch(`/api/admin/applications/${app.applicationId || app.id}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        fetchApplications();
+      } else {
+        alert('Failed to delete application');
+      }
+    } catch (error) {
+      console.error('Error deleting:', error);
+      alert('Error deleting application');
+    }
+  };
+
   return (
     <div className="space-y-6">
       {/* Page Header */}
@@ -313,6 +331,7 @@ export default function ApplicationsPage() {
                 <th className="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Loan Details</th>
                 <th className="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Contact</th>
                 <th className="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Documents</th>
+                <th className="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Date</th>
                 <th className="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
                 <th className="text-right px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Actions</th>
               </tr>
@@ -369,6 +388,11 @@ export default function ApplicationsPage() {
                       <span className="text-sm text-gray-500">-</span>
                     </td>
                     <td className="px-6 py-4">
+                      <span className="text-sm text-gray-900">
+                        {new Date(app.createdAt).toLocaleDateString()}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4">
                       <span className={`inline-flex px-3 py-1 rounded-lg text-xs font-semibold border ${getStatusStyle(app.status)}`}>
                         {app.status.charAt(0).toUpperCase() + app.status.slice(1).replace('-', ' ')}
                       </span>
@@ -400,6 +424,13 @@ export default function ApplicationsPage() {
                             <X className="w-4 h-4" />
                           </button>
                         )}
+                        <button 
+                          onClick={() => handleDelete(app)}
+                          className="p-2 hover:bg-red-100 rounded-lg text-gray-500 hover:text-red-600 transition-colors" 
+                          title="Delete"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
                       </div>
                     </td>
                   </tr>

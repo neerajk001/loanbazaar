@@ -49,6 +49,8 @@ export async function POST(request: NextRequest) {
     const mobileNumber = body.mobileNumber || body.basicInfo?.mobileNumber || 'Unknown';
     const email = body.email || body.basicInfo?.email || `${mobileNumber}@temp.com`;
     const dob = body.basicInfo?.dob ? new Date(body.basicInfo.dob) : new Date();
+    const parsedAnnualIncome = Number(body.annualIncome);
+    const annualIncome = !isNaN(parsedAnnualIncome) && parsedAnnualIncome > 0 ? parsedAnnualIncome : 0;
 
     // Create application document
     const application: InsuranceApplication = {
@@ -61,7 +63,7 @@ export async function POST(request: NextRequest) {
         mobileNumber,
         dob,
       },
-      sumInsured: body.sumInsured || 100000,
+      sumInsured: body.sumInsured || (annualIncome ? Math.round(annualIncome * 2) : 100000),
       vehicleInfo: body.vehicleInfo,
       loanInfo: body.loanInfo,
       status: 'pending',

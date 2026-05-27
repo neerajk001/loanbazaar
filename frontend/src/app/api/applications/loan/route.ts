@@ -49,7 +49,10 @@ export async function POST(request: NextRequest) {
     const mobileNumber = body.mobileNumber || body.personalInfo?.mobileNumber || 'Unknown';
     const email = body.email || body.personalInfo?.email || `lead+${mobileNumber}@temp.com`;
     const employmentType = body.employmentType || body.employmentInfo?.employmentType || 'salaried';
-    const annualIncome = body.annualIncome || (body.employmentInfo?.monthlyIncome ? body.employmentInfo.monthlyIncome * 12 : 0);
+    const parsedAnnualIncome = Number(body.annualIncome);
+    const annualIncome = !isNaN(parsedAnnualIncome) && parsedAnnualIncome > 0 
+      ? parsedAnnualIncome 
+      : (body.employmentInfo?.monthlyIncome ? body.employmentInfo.monthlyIncome * 12 : 0);
     const dob = body.personalInfo?.dob ? new Date(body.personalInfo.dob) : new Date();
 
     // Create application document
@@ -76,7 +79,7 @@ export async function POST(request: NextRequest) {
       businessDetails: body.businessDetails,
       propertyDetails: body.propertyDetails,
       loanRequirement: body.loanRequirement || {
-        loanAmount: Math.max(100000, Math.round(annualIncome * 0.5)),
+        loanAmount: Math.round(annualIncome * 0.5) || 100000,
         tenure: 5,
         loanPurpose: 'General'
       },
