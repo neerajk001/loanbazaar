@@ -44,17 +44,24 @@ export async function POST(request: NextRequest) {
     // Detect source (loan-sarathi or smartmumbaisolutions)
     const source = detectSource(request);
     
+    // Extract from flat or nested payload safely
+    const fullName = body.fullName || body.basicInfo?.fullName || 'Unknown';
+    const mobileNumber = body.mobileNumber || body.basicInfo?.mobileNumber || 'Unknown';
+    const email = body.email || body.basicInfo?.email || `${mobileNumber}@temp.com`;
+    const dob = body.basicInfo?.dob ? new Date(body.basicInfo.dob) : new Date();
+
     // Create application document
     const application: InsuranceApplication = {
       applicationId,
       userId: undefined,
-      userEmail: body.basicInfo.email || `${body.basicInfo.mobileNumber}@temp.com`,
-      insuranceType: body.insuranceType,
+      userEmail: email,
+      insuranceType: body.insuranceType || 'health',
       basicInfo: {
-        ...body.basicInfo,
-        dob: body.basicInfo.dob ? new Date(body.basicInfo.dob) : undefined,
+        fullName,
+        mobileNumber,
+        dob,
       },
-      sumInsured: body.sumInsured,
+      sumInsured: body.sumInsured || 100000,
       vehicleInfo: body.vehicleInfo,
       loanInfo: body.loanInfo,
       status: 'pending',
@@ -82,13 +89,12 @@ export async function POST(request: NextRequest) {
     
     // Send confirmation email (if email available)
     try {
-      const email = body.basicInfo.email;
-      if (email) {
+      if (email && email.includes('@')) {
         const confirmationEmail = createInsuranceApplicationConfirmationEmail(
-          body.basicInfo.fullName,
+          fullName,
           applicationId,
           email,
-          body.insuranceType
+          body.insuranceType || 'health'
         );
         await sendEmail(confirmationEmail);
       }
@@ -103,7 +109,7 @@ export async function POST(request: NextRequest) {
         const adminNotification = createAdminNotificationEmail(
           adminEmail,
           applicationId,
-          body.basicInfo.fullName,
+          fullName,
           'insurance'
         );
         await sendEmail(adminNotification);

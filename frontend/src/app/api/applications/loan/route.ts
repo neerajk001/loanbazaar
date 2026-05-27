@@ -44,20 +44,42 @@ export async function POST(request: NextRequest) {
     // Detect source (loan-sarathi or smartmumbaisolutions)
     const source = detectSource(request);
     
+    // Extract from flat or nested payload safely
+    const fullName = body.fullName || body.personalInfo?.fullName || 'Unknown';
+    const mobileNumber = body.mobileNumber || body.personalInfo?.mobileNumber || 'Unknown';
+    const email = body.email || body.personalInfo?.email || `lead+${mobileNumber}@temp.com`;
+    const employmentType = body.employmentType || body.employmentInfo?.employmentType || 'salaried';
+    const annualIncome = body.annualIncome || (body.employmentInfo?.monthlyIncome ? body.employmentInfo.monthlyIncome * 12 : 0);
+    const dob = body.personalInfo?.dob ? new Date(body.personalInfo.dob) : new Date();
+
     // Create application document
     const application: LoanApplication = {
       applicationId,
       userId: undefined,
-      userEmail: body.personalInfo.email,
-      loanType: body.loanType,
+      userEmail: email,
+      loanType: body.loanType || 'personal',
       personalInfo: {
-        ...body.personalInfo,
-        dob: new Date(body.personalInfo.dob),
+        fullName,
+        mobileNumber,
+        email,
+        pincode: body.personalInfo?.pincode || '000000',
+        dob,
+        city: body.personalInfo?.city || 'Unknown',
+        panCard: body.personalInfo?.panCard || 'XXXXX0000X',
       },
-      employmentInfo: body.employmentInfo,
+      employmentInfo: {
+        employmentType,
+        monthlyIncome: Math.round(annualIncome / 12),
+        employerName: body.employmentInfo?.employerName || 'NA',
+        existingEmi: body.employmentInfo?.existingEmi || 0,
+      },
       businessDetails: body.businessDetails,
       propertyDetails: body.propertyDetails,
-      loanRequirement: body.loanRequirement,
+      loanRequirement: body.loanRequirement || {
+        loanAmount: Math.max(100000, Math.round(annualIncome * 0.5)),
+        tenure: 5,
+        loanPurpose: 'General'
+      },
       status: 'pending',
       statusHistory: [
         {
@@ -84,11 +106,11 @@ export async function POST(request: NextRequest) {
     // Send confirmation email to applicant
     try {
       const confirmationEmail = createLoanApplicationConfirmationEmail(
-        body.personalInfo.fullName,
+        fullName,
         applicationId,
-        body.personalInfo.email,
-        body.loanType,
-        body.loanRequirement.loanAmount
+        email,
+        body.loanType || 'personal',
+        application.loanRequirement.loanAmount
       );
       await sendEmail(confirmationEmail);
     } catch (emailError) {
@@ -103,7 +125,7 @@ export async function POST(request: NextRequest) {
         const adminEmail_notification = createAdminNotificationEmail(
           adminEmail,
           applicationId,
-          body.personalInfo.fullName,
+          fullName,
           'loan'
         );
         await sendEmail(adminEmail_notification);
