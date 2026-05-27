@@ -31,36 +31,13 @@ const InsuranceApplicationForm = ({ insuranceType = 'health' }: InsuranceApplica
     );
   };
   const buildPayload = () => {
-    const annualIncome = Number(formData.annualIncome);
-    const base: any = {
+    return {
       insuranceType,
-      basicInfo: {
-        fullName: formData.fullName.trim(),
-        mobileNumber: formData.mobileNumber.trim(),
-        dob: '1990-01-01',
-      },
+      fullName: formData.fullName.trim(),
+      mobileNumber: formData.mobileNumber.trim(),
+      employmentType: formData.employmentType,
+      annualIncome: Number(formData.annualIncome),
     };
-    if (insuranceType === 'health' || insuranceType === 'term-life') {
-      base.sumInsured = Math.max(100000, Math.round(annualIncome * 2));
-    }
-    if (insuranceType === 'car' || insuranceType === 'bike') {
-      base.vehicleInfo = {
-        pincode: '400001',
-        vehicleNumber: 'MH12AB1234',
-        policyTerm: 1,
-      };
-    }
-    if (insuranceType === 'loan-protector' || insuranceType === 'emi-protector') {
-      base.loanInfo = {
-        loanType: formData.employmentType === 'salaried' ? 'personal' : 'business',
-        loanAmount: Math.max(100000, Math.round(annualIncome)),
-        tenure: 5,
-      };
-    }
-    if (insuranceType === 'loan-protector') {
-      base.basicInfo.age = 30;
-    }
-    return base;
   };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

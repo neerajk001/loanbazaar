@@ -36,30 +36,12 @@ const ApplicationForm = ({ loanType = 'personal' }: ApplicationFormProps) => {
       setSubmitError('Please enter valid details in all fields.');
       return;
     }
-    const annualIncome = Number(formData.annualIncome);
-    const monthlyIncome = Math.max(1, Math.round(annualIncome / 12));
     const payload = {
       loanType,
-      personalInfo: {
-        fullName: formData.fullName.trim(),
-        mobileNumber: formData.mobileNumber.trim(),
-        email: `lead+${formData.mobileNumber.trim()}@loanbazaar.in`,
-        pincode: '400001',
-        dob: '1990-01-01',
-        city: 'Mumbai',
-        panCard: 'ABCDE1234F',
-      },
-      employmentInfo: {
-        employmentType: formData.employmentType,
-        monthlyIncome,
-        employerName: 'NA',
-        existingEmi: 0,
-      },
-      loanRequirement: {
-        loanAmount: Math.max(100000, Math.round(annualIncome * 0.5)),
-        tenure: 5,
-        loanPurpose: 'General',
-      },
+      fullName: formData.fullName.trim(),
+      mobileNumber: formData.mobileNumber.trim(),
+      employmentType: formData.employmentType,
+      annualIncome: Number(formData.annualIncome),
     };
     setIsSubmitting(true);
     setSubmitError('');

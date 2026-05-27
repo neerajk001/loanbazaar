@@ -72,7 +72,7 @@ router.post('/loan', async (req, res) => {
     
     // Connect to database
     const client = await clientPromise;
-    const db = client.db('loan-sarathi');
+    const db = client.db('loanbaazaar');
     
     // Generate unique application ID
     const sequenceNumber = await getNextLoanSequenceNumber(db);
@@ -225,7 +225,7 @@ router.post('/insurance', async (req, res) => {
     
     // Connect to database
     const client = await clientPromise;
-    const db = client.db('loan-sarathi');
+    const db = client.db('loanbaazaar');
     
     // Generate unique application ID
     const sequenceNumber = await getNextInsuranceSequenceNumber(db);
