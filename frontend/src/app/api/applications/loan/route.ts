@@ -79,7 +79,7 @@ export async function POST(request: NextRequest) {
       businessDetails: body.businessDetails,
       propertyDetails: body.propertyDetails,
       loanRequirement: body.loanRequirement || {
-        loanAmount: Math.round(annualIncome * 0.5) || 100000,
+        loanAmount: annualIncome || 100000,
         tenure: 5,
         loanPurpose: 'General'
       },

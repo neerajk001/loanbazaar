@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
         mobileNumber,
         dob,
       },
-      sumInsured: body.sumInsured || (annualIncome ? Math.round(annualIncome * 2) : 100000),
+      sumInsured: body.sumInsured || annualIncome || 100000,
       vehicleInfo: body.vehicleInfo,
       loanInfo: body.loanInfo,
       status: 'pending',
