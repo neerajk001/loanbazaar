@@ -23,32 +23,30 @@ function validateInsuranceApplication(data) {
   
   // DOB or Age validation based on insurance type
   if (data.insuranceType === 'loan-protector') {
-    if (!data.basicInfo?.age || data.basicInfo.age < 18 || data.basicInfo.age > 100) {
+    if (data.basicInfo?.age && (data.basicInfo.age < 18 || data.basicInfo.age > 100)) {
       errors.push('Age is required and must be between 18 and 100');
     }
   } else {
-    if (!data.basicInfo?.dob) {
-      errors.push('Date of birth is required');
-    }
+    // DOB is optional for quick app
   }
   
   // Type-specific validation
   if (data.insuranceType === 'health' || data.insuranceType === 'term-life') {
-    if (!data.sumInsured || data.sumInsured < 100000) {
+    if (data.sumInsured && data.sumInsured < 100000) {
       errors.push('Sum insured must be at least ₹1,00,000');
     }
   }
   
   if (data.insuranceType === 'car' || data.insuranceType === 'bike') {
-    if (!data.vehicleInfo?.pincode || !/^\d{6}$/.test(data.vehicleInfo.pincode)) {
+    if (data.vehicleInfo?.pincode && !/^\d{6}$/.test(data.vehicleInfo.pincode)) {
       errors.push('Valid 6-digit pincode is required');
     }
     
-    if (!data.vehicleInfo?.vehicleNumber || !/^[A-Z]{2}\d{2}[A-Z]{1,2}\d{4}$/.test(data.vehicleInfo.vehicleNumber)) {
+    if (data.vehicleInfo?.vehicleNumber && !/^[A-Z]{2}\d{2}[A-Z]{1,2}\d{4}$/.test(data.vehicleInfo.vehicleNumber)) {
       errors.push('Valid vehicle number is required (e.g., MH12AB1234)');
     }
     
-    if (!data.vehicleInfo?.policyTerm || data.vehicleInfo.policyTerm < 1 || data.vehicleInfo.policyTerm > 3) {
+    if (data.vehicleInfo?.policyTerm && (data.vehicleInfo.policyTerm < 1 || data.vehicleInfo.policyTerm > 3)) {
       errors.push('Policy term must be between 1 and 3 years');
     }
   }
@@ -58,11 +56,11 @@ function validateInsuranceApplication(data) {
       errors.push('Loan type is required');
     }
     
-    if (!data.loanInfo?.loanAmount || data.loanInfo.loanAmount < 100000) {
+    if (data.loanInfo?.loanAmount && data.loanInfo.loanAmount < 100000) {
       errors.push('Loan amount must be at least ₹1,00,000');
     }
     
-    if (!data.loanInfo?.tenure || data.loanInfo.tenure < 1 || data.loanInfo.tenure > 30) {
+    if (data.loanInfo?.tenure && (data.loanInfo.tenure < 1 || data.loanInfo.tenure > 30)) {
       errors.push('Tenure must be between 1 and 30 years');
     }
   }

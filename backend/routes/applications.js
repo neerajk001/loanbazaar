@@ -26,6 +26,23 @@ router.post('/loan', async (req, res) => {
   try {
     const body = req.body;
     
+    // Support flat payload from quick application forms
+    if (!body.personalInfo) body.personalInfo = {};
+    if (!body.employmentInfo) body.employmentInfo = {};
+    
+    if (body.customerName || body.fullName) {
+      body.personalInfo.fullName = body.customerName || body.fullName;
+    }
+    if (body.mobileNo || body.mobileNumber) {
+      body.personalInfo.mobileNumber = body.mobileNo || body.mobileNumber;
+    }
+    if (body.employmentType) {
+      body.employmentInfo.employmentType = body.employmentType.toLowerCase();
+    }
+    if (body.annualIncome) {
+      body.employmentInfo.annualIncome = body.annualIncome;
+    }
+
     // Normalize loanType and set default fallbacks for simplified lead forms
     if (body.loanType) {
       let mappedType = body.loanType.toLowerCase();
@@ -208,6 +225,23 @@ router.post('/insurance', async (req, res) => {
   try {
     const body = req.body;
     
+    // Support flat payload from quick application forms
+    if (!body.basicInfo) body.basicInfo = {};
+    if (!body.employmentInfo) body.employmentInfo = {};
+    
+    if (body.customerName || body.fullName) {
+      body.basicInfo.fullName = body.customerName || body.fullName;
+    }
+    if (body.mobileNo || body.mobileNumber) {
+      body.basicInfo.mobileNumber = body.mobileNo || body.mobileNumber;
+    }
+    if (body.employmentType) {
+      body.employmentInfo.employmentType = body.employmentType.toLowerCase();
+    }
+    if (body.annualIncome) {
+      body.employmentInfo.annualIncome = body.annualIncome;
+    }
+
     // Normalize insuranceType and set default fallbacks for simplified lead forms
     if (body.insuranceType) {
       let mappedType = body.insuranceType.toLowerCase();

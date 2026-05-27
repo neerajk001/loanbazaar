@@ -21,29 +21,29 @@ function validateLoanApplication(data) {
     errors.push('Valid 10-digit mobile number is required');
   }
   
-  if (!data.personalInfo?.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.personalInfo.email)) {
+  if (data.personalInfo?.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.personalInfo.email)) {
     errors.push('Valid email address is required');
   }
   
-  if (!data.personalInfo?.pincode || !/^\d{6}$/.test(data.personalInfo.pincode)) {
+  if (data.personalInfo?.pincode && !/^\d{6}$/.test(data.personalInfo.pincode)) {
     errors.push('Valid 6-digit pincode is required');
   }
   
-  if (!data.personalInfo?.panCard || !/^[A-Z]{5}\d{4}[A-Z]$/.test(data.personalInfo.panCard)) {
+  if (data.personalInfo?.panCard && !/^[A-Z]{5}\d{4}[A-Z]$/.test(data.personalInfo.panCard)) {
     errors.push('Valid PAN card number is required (e.g., ABCDE1234F)');
   }
   
   // Employment Info validation
-  if (!data.employmentInfo?.monthlyIncome || data.employmentInfo.monthlyIncome < 0) {
+  if (data.employmentInfo?.monthlyIncome && data.employmentInfo.monthlyIncome < 0) {
     errors.push('Valid monthly income is required');
   }
   
   // Loan Requirement validation
-  if (!data.loanRequirement?.loanAmount || data.loanRequirement.loanAmount < 10000) {
+  if (data.loanRequirement?.loanAmount && data.loanRequirement.loanAmount < 10000) {
     errors.push('Loan amount must be at least ₹10,000');
   }
   
-  if (!data.loanRequirement?.tenure || data.loanRequirement.tenure < 1 || data.loanRequirement.tenure > 30) {
+  if (data.loanRequirement?.tenure && (data.loanRequirement.tenure < 1 || data.loanRequirement.tenure > 30)) {
     errors.push('Loan tenure must be between 1 and 30 years');
   }
   
