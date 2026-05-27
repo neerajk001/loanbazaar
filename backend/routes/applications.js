@@ -26,6 +26,69 @@ router.post('/loan', async (req, res) => {
   try {
     const body = req.body;
     
+    // Normalize loanType and set default fallbacks for simplified lead forms
+    if (body.loanType) {
+      let mappedType = body.loanType.toLowerCase();
+      if (mappedType === 'personal-loan') mappedType = 'personal';
+      else if (mappedType === 'business-loan') mappedType = 'business';
+      else if (mappedType === 'home-loan') mappedType = 'home';
+      else if (mappedType === 'mortgage-loan' || mappedType === 'lap') mappedType = 'lap';
+      else if (mappedType === 'car-loan') mappedType = 'car';
+      else if (mappedType === 'education-loan') mappedType = 'education';
+      body.loanType = mappedType;
+    }
+
+    if (!body.personalInfo) body.personalInfo = {};
+    if (!body.employmentInfo) body.employmentInfo = {};
+
+    const mobile = (body.personalInfo.mobileNumber || '').trim();
+    const annualIncome = parseFloat(body.employmentInfo.annualIncome) || 
+                         (parseFloat(body.employmentInfo.monthlyIncome) * 12) || 0;
+    
+    if (!body.personalInfo.email && mobile) {
+      body.personalInfo.email = `lead+${mobile}@loanbazaar.in`;
+    }
+    if (!body.personalInfo.pincode) {
+      body.personalInfo.pincode = '400001';
+    }
+    if (!body.personalInfo.dob) {
+      body.personalInfo.dob = '1990-01-01';
+    }
+    if (!body.personalInfo.city) {
+      body.personalInfo.city = 'Mumbai';
+    }
+    if (!body.personalInfo.panCard) {
+      body.personalInfo.panCard = 'ABCDE1234F';
+    }
+
+    if (!body.employmentInfo.employerName) {
+      body.employmentInfo.employerName = 'NA';
+    }
+    if (body.employmentInfo.existingEmi === undefined) {
+      body.employmentInfo.existingEmi = 0;
+    }
+    if (!body.employmentInfo.monthlyIncome) {
+      body.employmentInfo.monthlyIncome = Math.max(1, Math.round(annualIncome / 12));
+    }
+
+    if (!body.loanRequirement) {
+      body.loanRequirement = {
+        loanAmount: Math.max(100000, Math.round(annualIncome * 0.5)),
+        tenure: 5,
+        loanPurpose: 'General',
+      };
+    } else {
+      if (!body.loanRequirement.loanAmount) {
+        body.loanRequirement.loanAmount = Math.max(100000, Math.round(annualIncome * 0.5));
+      }
+      if (!body.loanRequirement.tenure) {
+        body.loanRequirement.tenure = 5;
+      }
+      if (!body.loanRequirement.loanPurpose) {
+        body.loanRequirement.loanPurpose = 'General';
+      }
+    }
+    
     // Validate the application data
     const validation = validateLoanApplication(body);
     if (!validation.valid) {
@@ -145,6 +208,76 @@ router.post('/insurance', async (req, res) => {
   try {
     const body = req.body;
     
+    // Normalize insuranceType and set default fallbacks for simplified lead forms
+    if (body.insuranceType) {
+      let mappedType = body.insuranceType.toLowerCase();
+      if (mappedType === 'health-insurance') mappedType = 'health';
+      else if (mappedType === 'car-insurance') mappedType = 'car';
+      else if (mappedType === 'bike-insurance') mappedType = 'bike';
+      body.insuranceType = mappedType;
+    }
+
+    if (!body.basicInfo) body.basicInfo = {};
+    if (!body.employmentInfo) body.employmentInfo = {};
+
+    const mobile = (body.basicInfo.mobileNumber || '').trim();
+    const annualIncome = parseFloat(body.employmentInfo.annualIncome) || 0;
+
+    if (!body.basicInfo.email && mobile) {
+      body.basicInfo.email = `lead+${mobile}@loanbazaar.in`;
+    }
+    if (!body.basicInfo.dob) {
+      body.basicInfo.dob = '1990-01-01';
+    }
+
+    const insuranceType = body.insuranceType;
+
+    if (insuranceType === 'loan-protector') {
+      if (!body.basicInfo.age) {
+        body.basicInfo.age = 30;
+      }
+    }
+
+    if (insuranceType === 'health' || insuranceType === 'term-life') {
+      if (!body.sumInsured) {
+        body.sumInsured = Math.max(100000, Math.round(annualIncome * 2));
+      }
+    }
+
+    if (insuranceType === 'car' || insuranceType === 'bike') {
+      if (!body.vehicleInfo) {
+        body.vehicleInfo = {
+          pincode: '400001',
+          vehicleNumber: 'MH12AB1234',
+          policyTerm: 1,
+        };
+      } else {
+        if (!body.vehicleInfo.pincode) body.vehicleInfo.pincode = '400001';
+        if (!body.vehicleInfo.vehicleNumber) body.vehicleInfo.vehicleNumber = 'MH12AB1234';
+        if (!body.vehicleInfo.policyTerm) body.vehicleInfo.policyTerm = 1;
+      }
+    }
+
+    if (insuranceType === 'loan-protector' || insuranceType === 'emi-protector') {
+      if (!body.loanInfo) {
+        body.loanInfo = {
+          loanType: body.employmentInfo.employmentType === 'salaried' ? 'personal' : 'business',
+          loanAmount: Math.max(100000, Math.round(annualIncome)),
+          tenure: 5,
+        };
+      } else {
+        if (!body.loanInfo.loanType) {
+          body.loanInfo.loanType = body.employmentInfo.employmentType === 'salaried' ? 'personal' : 'business';
+        }
+        if (!body.loanInfo.loanAmount) {
+          body.loanInfo.loanAmount = Math.max(100000, Math.round(annualIncome));
+        }
+        if (!body.loanInfo.tenure) {
+          body.loanInfo.tenure = 5;
+        }
+      }
+    }
+
     // Validate the application data
     const validation = validateInsuranceApplication(body);
     if (!validation.valid) {
