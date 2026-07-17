@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import clientPromise from '@/lib/mongodb';
 
 const LOAN_PRODUCTS_COLLECTION = 'loanProducts';
+export const revalidate = 3600;
+export const dynamic = 'force-dynamic';
 
 interface LoanProduct {
   _id: string;
@@ -108,6 +110,10 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({
         success: true,
         products: allProducts,
+      }, {
+        headers: {
+          'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+        },
       });
     }
   } catch (error) {

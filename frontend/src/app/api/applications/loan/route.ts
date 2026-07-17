@@ -13,9 +13,18 @@ import {
   createAdminNotificationEmail,
 } from '@/lib/email';
 import { detectSource } from '@/lib/source-detection';
+import { applyRateLimit } from '@/lib/rate-limit';
 
 // POST /api/applications/loan - Submit a new loan application
 export async function POST(request: NextRequest) {
+  const rateLimitResult = applyRateLimit(request, { interval: 60000, maxRequests: 5 });
+  if (!rateLimitResult.allowed) {
+    return NextResponse.json(
+      { success: false, error: 'Too many requests. Please try again later.' },
+      { status: 429, headers: rateLimitResult.headers }
+    );
+  }
+
   try {
     const body = await request.json();
     

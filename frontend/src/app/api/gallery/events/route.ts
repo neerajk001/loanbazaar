@@ -7,12 +7,36 @@ import {
 } from '@/models/GalleryEvent';
 import { detectSource } from '@/lib/source-detection';
 
+export const revalidate = 60;
+export const dynamic = 'force-dynamic';
+
 // GET /api/gallery/events - Get all published gallery events
 export async function GET(request: NextRequest) {
   try {
     console.log('[Gallery API] GET /api/gallery/events called');
     
     const { searchParams } = new URL(request.url);
+    const healthCheck = searchParams.get('health');
+    
+    if (healthCheck === 'true') {
+      const headers = {
+        origin: request.headers.get('origin') || 'none',
+        host: request.headers.get('host') || 'none',
+      };
+      return NextResponse.json({
+        success: true,
+        message: 'Gallery API is working!',
+        timestamp: new Date().toISOString(),
+        detectedSource: detectSource(request),
+        requestHeaders: headers,
+        endpoints: {
+          getAllEvents: '/api/gallery/events',
+          getFeaturedEvents: '/api/gallery/events?featured=true',
+          getSingleEvent: '/api/gallery/events/:id',
+        },
+      });
+    }
+
     const source = detectSource(request);
     const featured = searchParams.get('featured');
     const limit = parseInt(searchParams.get('limit') || '50');
@@ -67,6 +91,10 @@ export async function GET(request: NextRequest) {
       success: true,
       total,
       events: events.map(formatGalleryEventForResponse),
+    }, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=300',
+      },
     });
   } catch (error) {
     console.error('[Gallery API] Error fetching gallery events:', error);

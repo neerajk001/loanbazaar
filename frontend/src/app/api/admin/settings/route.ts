@@ -27,11 +27,24 @@ export async function GET(request: NextRequest) {
   // Note: Add proper admin authentication if needed
 
   try {
+    const { searchParams } = new URL(request.url);
+    const check = searchParams.get('check');
+
     const client = await clientPromise;
     const db = client.db('loan-sarathi');
     const collection = db.collection<AdminSettings>(SETTINGS_COLLECTION);
 
     const settings = await collection.findOne({ _id: 'main' } as any);
+
+    if (check === 'emails') {
+      const adminEmails = settings?.settings?.adminEmails || [];
+      return NextResponse.json({
+        success: true,
+        adminEmails,
+        source: settings ? 'database' : 'default',
+        message: `Found ${adminEmails.length} admin email(s) configured`,
+      });
+    }
 
     const currentSettings = settings?.settings || DEFAULT_SETTINGS;
 

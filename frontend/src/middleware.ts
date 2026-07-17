@@ -13,6 +13,8 @@ export function middleware(request: NextRequest) {
     'https://loanbazaar.onrender.com',
     'https://loanbaazaar.com',
     'https://www.loanbaazaar.com',
+    'https://ssolutions.in',
+    'https://www.ssolutions.in',
   ];
 
   const origin = request.headers.get('origin');

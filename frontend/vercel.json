@@ -1,0 +1,58 @@
+{
+  "functions": {
+    "src/app/api/**/*.ts": {
+      "memory": 512,
+      "maxDuration": 10
+    },
+    "src/app/api/admin/gallery/events/route.ts": {
+      "memory": 1024,
+      "maxDuration": 15
+    },
+    "src/app/api/admin/gallery/events/[id]/**/*.ts": {
+      "memory": 1024,
+      "maxDuration": 15
+    }
+  },
+  "headers": [
+    {
+      "source": "/api/gallery/events(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "s-maxage=60, stale-while-revalidate=300"
+        }
+      ]
+    },
+    {
+      "source": "/api/loan-products(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "s-maxage=3600, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/(.*).(woff2|woff|ttf|otf)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*).(png|jpg|jpeg|gif|webp|svg|ico)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "trailingSlash": false,
+  "github": {
+    "silent": true
+  }
+}

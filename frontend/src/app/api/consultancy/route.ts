@@ -9,10 +9,19 @@ import {
 } from '@/models/ConsultancyRequest';
 import { sendEmail } from '@/lib/email';
 import { detectSource, isSourceAllowed } from '@/lib/source-detection';
+import { applyRateLimit } from '@/lib/rate-limit';
 
 // POST /api/consultancy - Submit a new consultancy request
 // NOTE: This endpoint is ONLY available for loan-sarathi, NOT for smartmumbaisolutions
 export async function POST(request: NextRequest) {
+  const rateLimitResult = applyRateLimit(request, { interval: 60000, maxRequests: 5 });
+  if (!rateLimitResult.allowed) {
+    return NextResponse.json(
+      { success: false, error: 'Too many requests. Please try again later.' },
+      { status: 429, headers: rateLimitResult.headers }
+    );
+  }
+
   try {
     // Detect source and check if allowed
     const source = detectSource(request);

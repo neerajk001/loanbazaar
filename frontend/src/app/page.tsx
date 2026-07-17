@@ -1,16 +1,13 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
-import FeaturedPartners from '@/components/FeaturedPartners';
-import Partners from '@/components/Partners';
-import Features from '@/components/Features';
-import Products from '@/components/Products';
-import InsuranceProducts from '@/components/InsuranceProducts';
-import Process from '@/components/Process';
-import FundingPath from '@/components/FundingPath';
-import Calculator from '@/components/Calculator';
-
-import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
+import dynamic from 'next/dynamic';
+
+const Products = dynamic(() => import('@/components/Products'), { loading: () => <div className="h-64" /> });
+const InsuranceProducts = dynamic(() => import('@/components/InsuranceProducts'), { loading: () => <div className="h-64" /> });
+const Calculator = dynamic(() => import('@/components/Calculator'), { loading: () => <div className="h-96" /> });
+const Features = dynamic(() => import('@/components/Features'), { loading: () => <div className="h-64" /> });
+const FAQ = dynamic(() => import('@/components/FAQ'), { loading: () => <div className="h-64" /> });
 
 export default function Home() {
   return (
