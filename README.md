@@ -13,18 +13,15 @@ LoanBazaar is a full-stack loan and insurance application platform built with **
 
 ```
 loanbazaar/
-├── frontend/              # Next.js Fullstack App
-│   ├── src/
-│   │   ├── app/          # Pages + API routes (single codebase)
-│   │   │   ├── api/      # Next.js API route handlers
-│   │   │   ├── admin/    # Admin dashboard pages
-│   │   │   └── ...       # Public pages
-│   │   ├── components/   # React components
-│   │   ├── lib/          # Utilities (mongodb, email, upload, etc.)
-│   │   └── models/       # TypeScript data models
-│   └── public/           # Static files + uploads
-│
-└── backend/               # [LEGACY] Express server (no longer required)
+├── src/
+│   ├── app/          # Pages + API routes (single codebase)
+│   │   ├── api/      # Next.js API route handlers
+│   │   ├── admin/    # Admin dashboard pages
+│   │   └── ...       # Public pages
+│   ├── components/   # React components
+│   ├── lib/          # Utilities (mongodb, email, upload, etc.)
+│   └── models/       # TypeScript data models
+└── public/           # Static files + uploads
 ```
 
 ## Getting Started
@@ -38,13 +35,12 @@ loanbazaar/
 ### Installation
 
 ```bash
-cd frontend
 npm install  # or: pnpm install
 ```
 
 ### Configuration
 
-Create `frontend/.env.local`:
+Create `.env.local`:
 
 ```env
 NEXTAUTH_URL=http://localhost:3001
@@ -57,7 +53,6 @@ GOOGLE_CLIENT_SECRET=...
 ### Running
 
 ```bash
-cd frontend
 npm run dev
 ```
 
@@ -66,14 +61,13 @@ App runs on `http://localhost:3001`.
 ### Production Build
 
 ```bash
-cd frontend
 npm run build
 npm start
 ```
 
 ## API Endpoints
 
-All endpoints live at `frontend/src/app/api/`.
+All endpoints live at `src/app/api/`.
 
 | Endpoint | Method | Auth | Description |
 |---|---|---|---|

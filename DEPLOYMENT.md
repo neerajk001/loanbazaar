@@ -113,13 +113,13 @@ sudo mkdir -p /var/www
 sudo chown $USER:$USER /var/www
 
 git clone https://github.com/YOUR_ORG/loanbazaar.git
-cd loanbazaar/frontend
+cd loanbazaar
 npm install
 ```
 
 ### 5.2 Environment file
 
-Create `/var/www/loanbazaar/frontend/.env.production`:
+Create `/var/www/loanbazaar/.env.production`:
 
 ```env
 NEXTAUTH_URL=https://loanbaazaar.com
@@ -233,7 +233,7 @@ sudo certbot renew --dry-run
 ### 7.1 Start the app
 
 ```bash
-cd /var/www/loanbazaar/frontend
+cd /var/www/loanbazaar
 pm2 start npm --name loanbazaar -- start
 ```
 
@@ -289,7 +289,6 @@ pm2 stop loanbazaar
 ```bash
 cd /var/www/loanbazaar
 git pull origin main
-cd frontend
 npm install
 npm run build
 pm2 restart loanbazaar
